@@ -1,0 +1,19 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
+# Idea
+.idea/
+
+# claude
+.claude/settings.local.json
+CLAUDE.local.md
+
+# superpowers
+.superpowers/
+docs/superpowers/
+
+# Original C++ reference
+/reference/
