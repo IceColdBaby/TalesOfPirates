@@ -17,3 +17,6 @@ docs/superpowers/
 
 # Original C++ reference
 /reference/
+*.DotSettings.user
+
+/artifacts/

@@ -3,4 +3,11 @@
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
   </Folder>
+
+  <Folder Name="/Solution Items/src/">
+    <File Path="src/Directory.Build.props" />
+    <File Path="src/Directory.Build.targets" />
+  </Folder>
+
+  <Folder Name="/src/" />
 </Solution>
