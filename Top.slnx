@@ -9,5 +9,10 @@
     <File Path="src/Directory.Build.targets" />
   </Folder>
 
-  <Folder Name="/src/" />
+  <Folder Name="/src/">
+    <Project Path="src/Top.Text/Top.Text.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Top.Text.Tests/Top.Text.Tests.csproj" />
+  </Folder>
 </Solution>
