@@ -1,0 +1,10 @@
+{
+  "name": "com.top.mindpower",
+  "version": "0.1.0",
+  "displayName": "Top.MindPower",
+  "description": "Readers and writers for MindPower engine file formats (Tales of Pirates).",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.top.text": "0.1.0"
+  }
+}

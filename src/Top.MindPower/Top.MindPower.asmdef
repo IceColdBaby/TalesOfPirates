@@ -1,0 +1,16 @@
+{
+    "name": "Top.MindPower",
+    "rootNamespace": "Top",
+    "references": [
+        "Top.Text"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

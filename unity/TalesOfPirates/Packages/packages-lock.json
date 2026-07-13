@@ -10,6 +10,14 @@
       },
       "hash": "78ee5418415953b79c358bfe6355fcc3fde7912b"
     },
+    "com.top.mindpower": {
+      "version": "file:../../../src/Top.MindPower",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.top.text": "0.1.0"
+      }
+    },
     "com.top.text": {
       "version": "file:../../../src/Top.Text",
       "depth": 0,

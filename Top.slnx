@@ -10,9 +10,11 @@
   </Folder>
 
   <Folder Name="/src/">
+    <Project Path="src/Top.MindPower/Top.MindPower.csproj" />
     <Project Path="src/Top.Text/Top.Text.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/Top.MindPower.Tests/Top.MindPower.Tests.csproj" />
     <Project Path="tests/Top.Text.Tests/Top.Text.Tests.csproj" />
   </Folder>
 </Solution>

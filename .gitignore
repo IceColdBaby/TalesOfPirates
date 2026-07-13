@@ -20,3 +20,8 @@ docs/superpowers/
 *.DotSettings.user
 
 /artifacts/
+
+# Test fixtures are tracked (Git LFS); keep them even when a fixture directory
+# name collides with a build-output rule above (e.g. tests/fixtures/obj).
+!tests/fixtures/obj/
+!tests/fixtures/obj/**
