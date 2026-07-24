@@ -24,6 +24,17 @@
       "source": "local",
       "dependencies": {}
     },
+    "com.top.engine": {
+      "version": "file:../../packages/com.top.engine",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.top.text": "0.1.0",
+        "com.top.mindpower": "0.1.0",
+        "com.top.gltf": "0.1.0",
+        "com.top.assets.conversion": "0.1.0"
+      }
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.12",
       "depth": 0,

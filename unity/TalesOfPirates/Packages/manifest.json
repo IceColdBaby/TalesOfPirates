@@ -2,6 +2,7 @@
   "dependencies": {
     "com.top.text": "file:../../../src/Top.Text",
     "com.top.mindpower": "file:../../../src/Top.MindPower",
+    "com.top.engine": "file:../../packages/com.top.engine",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
     "com.unity.ai.navigation": "2.0.12",
     "com.unity.collab-proxy": "2.12.4",
