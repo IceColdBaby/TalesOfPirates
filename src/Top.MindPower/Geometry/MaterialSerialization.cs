@@ -10,7 +10,7 @@ namespace Top.MindPower.Geometry
     {
         private const uint D3DRS_ALPHAREF = 24;
         private const uint D3DRS_ALPHAFUNC = 25;
-        private const uint D3DCMP_GREATER = 4;
+        private const uint D3DCMP_GREATER = 5;
         private const int TssAtomCount = 8;
 
         internal static uint ReadMaterialVersion(this BinaryReader r, uint version)
@@ -42,7 +42,7 @@ namespace Top.MindPower.Geometry
                         info.Transparency = TransparencyType.Filter;
                         info.Material = r.ReadMaterialDefinition();
                         info.RenderStates = r.ReadLegacyRenderStates();
-                        ApplyV0AlphaRemap(info.RenderStates);
+                        ApplyLegacyAlphaRemap(info.RenderStates);
                         info.Stages = new TextureStage[4];
                         for (var s = 0; s < 4; s++)
                         {
@@ -56,6 +56,7 @@ namespace Top.MindPower.Geometry
                         info.Transparency = (TransparencyType)r.ReadUInt32();
                         info.Material = r.ReadMaterialDefinition();
                         info.RenderStates = r.ReadLegacyRenderStates();
+                        ApplyLegacyAlphaRemap(info.RenderStates);
                         info.Stages = new TextureStage[4];
                         for (var s = 0; s < 4; s++)
                         {
@@ -196,7 +197,13 @@ namespace Top.MindPower.Geometry
             return atoms;
         }
 
-        private static void ApplyV0AlphaRemap(RenderStateAtom[] atoms)
+        /// <summary>
+        /// The two oldest material layouts have their alpha func and ref
+        /// replaced as they are read; the exported values never reach the
+        /// engine. Applies to both, not just the oldest.
+        /// <br/> lwMtlTexInfo_Load (lwExpObj.cpp)
+        /// </summary>
+        private static void ApplyLegacyAlphaRemap(RenderStateAtom[] atoms)
         {
             for (var i = 0; i < atoms.Length; i++)
             {

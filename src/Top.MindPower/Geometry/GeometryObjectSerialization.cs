@@ -25,6 +25,15 @@ namespace Top.MindPower.Geometry
             var helperSize = r.ReadUInt32();
             var animSize = r.ReadUInt32();
 
+            // lwGeomObjInfo::Load rejects implausible sizes at this point; a
+            // few shipped files predate the header's rcci/state_ctrl fields
+            // and are unloadable by the retail engine too.
+            if (mtlSize > 100000)
+            {
+                throw new ParseException("geomobj", version, r.BaseStream.Position,
+                    $"implausible material block size {mtlSize}; stale header layout");
+            }
+
             var obj = new GeometryObject
             {
                 Version = version,

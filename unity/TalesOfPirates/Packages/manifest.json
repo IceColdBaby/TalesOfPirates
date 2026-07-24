@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+    "com.top.assets.conversion": "file:../../../src/Top.Assets.Conversion",
     "com.top.engine": "file:../../packages/com.top.engine",
     "com.top.mindpower": "file:../../../src/Top.MindPower",
     "com.top.tables": "file:../../../src/Top.Tables",
@@ -52,5 +53,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "testables": [
+    "com.top.engine"
+  ]
 }

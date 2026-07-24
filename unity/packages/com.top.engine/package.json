@@ -5,6 +5,7 @@
   "description": "Core functionality package",
   "unity": "6000.0",
   "dependencies": {
+    "com.top.assets.conversion": "0.1.0",
     "com.top.text": "0.1.0",
     "com.top.mindpower": "0.1.0",
     "com.top.gltf": "0.1.0"

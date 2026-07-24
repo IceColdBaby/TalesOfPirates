@@ -1,0 +1,11 @@
+{
+  "name": "com.top.assets.conversion",
+  "version": "0.1.0",
+  "displayName": "Top.Assets.Conversion",
+  "description": "Projects MindPower models to glTF and textures to PNG.",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.top.mindpower": "0.1.0",
+    "com.top.gltf": "0.1.0"
+  }
+}

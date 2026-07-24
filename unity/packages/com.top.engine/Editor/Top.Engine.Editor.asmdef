@@ -1,0 +1,21 @@
+{
+    "name": "Top.Engine.Editor",
+    "rootNamespace": "Top",
+    "references": [
+        "Top.Engine",
+        "Top.Text",
+        "Top.MindPower",
+        "Top.Gltf",
+        "Top.Assets.Conversion",
+        "Top.Tables"
+    ],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

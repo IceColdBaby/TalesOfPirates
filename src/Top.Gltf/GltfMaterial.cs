@@ -20,6 +20,7 @@ namespace Top.Gltf
 
     public class GltfPbrMetallicRoughness
     {
+        [JsonProperty("baseColorFactor")] public float[] BaseColorFactor;
         [JsonProperty("baseColorTexture")] public GltfTextureInfo BaseColorTexture;
         [JsonProperty("metallicFactor")] public float? MetallicFactor;
         [JsonProperty("roughnessFactor")] public float? RoughnessFactor;
