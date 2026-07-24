@@ -13,3 +13,23 @@ jobs:
         with:
           dotnet-version: '10.0.x'
       - run: dotnet test Top.slnx --configuration Release
+  gltf-validator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet test tests/Top.Gltf.Tests/Top.Gltf.Tests.csproj --configuration Release --filter "TestCategory=EmitSamples"
+      - name: Validate emitted glTF
+        run: |
+          curl -sL -o validator.tar.xz https://github.com/KhronosGroup/glTF-Validator/releases/download/2.0.0-dev.3.10/gltf_validator-2.0.0-dev.3.10-linux64.tar.xz
+          tar xf validator.tar.xz
+          status=0
+          for f in artifacts/gltf-samples/*.glb artifacts/gltf-samples/*.gltf; do
+            ./gltf_validator -a "$f" || true
+            errors=$(python3 -c "import json; print(json.load(open('$f.report.json'))['issues']['numErrors'])")
+            echo "$f -> $errors errors"
+            if [ "$errors" != "0" ]; then status=1; fi
+          done
+          exit $status

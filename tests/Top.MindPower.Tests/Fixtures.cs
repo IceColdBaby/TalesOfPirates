@@ -1,12 +1,13 @@
-using NUnit.Framework;
+using System.Linq;
+using System.Reflection;
 
 namespace Top.MindPower.Tests
 {
     internal static class Fixtures
     {
-        internal static string FixturesPath => System.IO.Path.Combine(
-            TestContext.CurrentContext.TestDirectory,
-            "..", "..", "..", "..", "fixtures");
+        internal static string FixturesPath => typeof(Fixtures).Assembly
+            .GetCustomAttributes<AssemblyMetadataAttribute>()
+            .First(a => a.Key == "FixturesPath").Value;
 
         internal static string Path(string relative)
         {

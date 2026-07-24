@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path=".github/workflows/ci.yml" />
     <File Path=".gitignore" />
   </Folder>
 
@@ -9,12 +10,19 @@
     <File Path="src/Directory.Build.targets" />
   </Folder>
 
+  <Folder Name="/Solution Items/tests/">
+    <File Path="tests/Directory.Build.props" />
+    <File Path="tests/Directory.Build.targets" />
+  </Folder>
+
   <Folder Name="/src/">
     <Project Path="src/Top.MindPower/Top.MindPower.csproj" />
     <Project Path="src/Top.Text/Top.Text.csproj" />
+    <Project Path="src/Top.Gltf/Top.Gltf.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Top.MindPower.Tests/Top.MindPower.Tests.csproj" />
     <Project Path="tests/Top.Text.Tests/Top.Text.Tests.csproj" />
+    <Project Path="tests/Top.Gltf.Tests/Top.Gltf.Tests.csproj" />
   </Folder>
 </Solution>

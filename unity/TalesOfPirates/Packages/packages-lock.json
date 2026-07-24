@@ -21,6 +21,16 @@
       "version": "file:../../packages/com.top.engine",
       "depth": 0,
       "source": "local",
+      "dependencies": {
+        "com.top.text": "0.1.0",
+        "com.top.mindpower": "0.1.0",
+        "com.top.gltf": "0.1.0"
+      }
+    },
+    "com.top.gltf": {
+      "version": "file:../../../src/Top.Gltf",
+      "depth": 0,
+      "source": "local",
       "dependencies": {}
     },
     "com.top.mindpower": {

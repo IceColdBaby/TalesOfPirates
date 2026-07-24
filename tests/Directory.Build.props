@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)../artifacts</ArtifactsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="ArtifactsPath" Value="$([System.IO.Path]::GetFullPath('$(ArtifactsPath)'))" />
+    <AssemblyMetadata Include="FixturesPath" Value="$(MSBuildThisFileDirectory)fixtures" />
+  </ItemGroup>
+</Project>
