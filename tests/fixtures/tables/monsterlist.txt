@@ -1,0 +1,40 @@
+//ID	Name	Level	Coordinates	Map
+0	Monster Name 	Monster Level 	0,0	Region 
+1	Mystic Shrub	1	2092,2654	Ascaron
+2	Sleepy Snail	2	2108,2694	Ascaron
+3	Forest Spirit	3	2046,2611	Ascaron
+4	Little Squirt	3	2077,2811	Ascaron
+5	Mystic Flower	4	2210,2612	Ascaron
+6	Mini Bee	5	2077,2772	Ascaron
+7	Little Squidy	5	2294,2548	Ascaron
+8	Greedy Shroom	6	2218,2594	Ascaron
+9	Grass Tortoise	7	2066,2555	Ascaron
+10	Sea Snail	8	1988,2833	Ascaron
+11	Cuddly Lamb	8	1968,2697	Ascaron
+12	Bubble Clam	9	2191,2514	Ascaron
+13	Marsh Spirit	9	1998,2625	Ascaron
+14	Piglet	10	1950,2563	Ascaron
+15	Bear Cub	12	1899,2825	Ascaron
+16	Oyster	13	1800,2472	Ascaron
+17	Whacky Lamb	14	1972,2683	Ascaron
+18	Armored Crab	15	1766,2536	Ascaron
+19	Sentry Crab	16	1784,2508	Ascaron
+20	Angelic Panda	17	1693,2579	Ascaron
+21	Killer Shroom	19	1589,2668	Ascaron
+22	Smuggler	20	1624,3017	Ascaron
+23	Barbaric Bee	20	1667,3140	Ascaron
+24	Owlie	21	1490,2712	Ascaron
+25	Tusk Battle Boar	23	1296,2977	Ascaron
+26	Air Porky	23	1357,2864	Ascaron
+27	Bandit	25	1038,3062	Ascaron
+28	Meadow Deer	25	1469,2671	Ascaron
+29	Seaweed	25	899,580	Ascaron
+30	Wild Seaweed	25	1448,1602	Ascaron
+31	Stramonium	26	1381,2904	Ascaron
+32	Sea Jelly	26	1573,1200	Ascaron
+33	Floating Seaweed	26	1573,1200	Ascaron
+34	Rookie Boxeroo	27	1152,2908	Ascaron
+35	Skeleton Fish	27	3697,1156	Ascaron
+36	Icky Seaweed	27	3930,3150	Ascaron
+37	Mature Grass Tortoise	28	1199,3117	Ascaron
+38	Mad Boar	30	911,2972	Ascaron

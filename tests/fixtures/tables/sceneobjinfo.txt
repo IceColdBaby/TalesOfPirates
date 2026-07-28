@@ -1,0 +1,40 @@
+//ID	模型文件名	中文名称	类型	类型参数1	类型参数2	Special Parameter	平行光影响	点光源影响	风格	Sign	背景色开关	受地表阴影印象
+1	by-bd001.lmo	Argent Palace 0	0	0	0	0	1	0	1	0	1	0
+2	by-bd002.lmo	Argent Navy Adm	0	0	0	0	1	0	1	0	1	0
+3	by-bd003.lmo	Argent Bank HQ 	0	0	0	0	1	0	1	0	1	0
+4	by-bd004.lmo	Argent Commerce	0	0	0	0	1	0	1	0	1	0
+5	by-bd005.lmo	Argent Blacksmi	0	0	0	0	1	0	1	0	1	1
+6	nml-bd141.lmo	Whirlpool 01	0	0	0	0	0	0	9	0	1	0
+7	by-bd007.lmo	Argent Trading 	0	0	0	0	1	0	1	0	1	0
+8	by-bd008.lmo	Argent Shipyard	0	0	0	0	1	0	1	0	1	0
+9	by-bd009.lmo	Argent Deep Blu	0	0	0	0	1	0	1	0	1	0
+10	by-bd010.lmo	Argent Bar 01	0	0	0	0	0	0	1	0	1	0
+11	by-bd011.lmo	Argent Church 0	0	0	0	0	1	0	1	0	1	0
+12	nml-bd150.lmo	Broken Bridge 0	0	0	0	0	1	0	9	0	1	1
+13	by-bd013.lmo	Argent Lighthou	0	0	0	0	0	0	1	0	1	0
+14	by-bd014-1.lmo	Argent Harbor M	0	0	0	0	1	0	1	0	1	0
+15	by-bd014-2.lmo	Argent Harbor M	0	0	0	0	1	0	1	0	1	0
+16	by-bd014-3.lmo	Argent Harbor C	0	0	0	0	1	0	1	0	1	0
+17	by-bd014-4.lmo	Argent Harbor C	0	0	0	0	1	0	1	0	1	0
+18	by-bd014-5.lmo	Argent Harbor H	0	0	0	0	1	0	1	0	1	0
+19	by-bd014-6.lmo	Argent Harbor S	0	0	0	0	1	0	1	0	1	0
+20	by-bd014-7.lmo	Argent Harbor C	0	0	0	0	1	0	1	0	1	0
+21	by-bd014-8.lmo	Argent Harbor C	0	0	0	0	1	0	1	0	1	0
+22	by-bd015.lmo	Argent Bell Tow	0	0	0	0	0	0	1	0	1	0
+23	by-bd016.lmo	Argent House 01	0	0	0	0	1	0	1	0	1	0
+24	by-bd017.lmo	Argent House 02	0	0	0	0	1	0	1	0	1	0
+25	by-bd018.lmo	Argent Guardhou	0	0	0	0	1	0	1	0	1	0
+26	nml-bd151.lmo	Volcano 01	0	0	0	0	0	0	9	0	1	1
+27	by-bd020.lmo	Argent Warehous	0	0	0	0	1	0	1	0	1	0
+28	nml-bd152.lmo	Aquatic Rock 01	0	0	0	0	1	0	9	0	1	1
+29	by-bd022.lmo	Argent Waterwhe	0	0	0	0	1	0	1	0	1	0
+30	by-bd023.lmo	Argent Harbor S	0	0	0	0	1	0	1	0	1	0
+31	by-bd024.lmo	Argent Harbor S	0	0	0	0	1	0	1	0	1	0
+32	by-bd025.lmo	Argent Harbor S	0	0	0	0	1	0	1	0	1	0
+33	by-bd026.lmo	Argent Harbor C	0	0	0	0	1	0	1	0	1	0
+34	by-bd027.lmo	Argent Church B	0	0	0	0	1	0	1	0	1	0
+35	nml-bd153.lmo	Underwater Stat	0	0	0	0	1	0	9	0	1	1
+36	by-bd036.lmo	Argent Street L	0	0	0	0	1	0	1	0	1	0
+37	by-bd037.lmo	Argent City Fen	0	0	0	0	1	0	1	0	1	0
+38	by-bd038.lmo	Argent Gate Pil	0	0	0	0	1	0	1	0	1	0
+39	by-bd039.lmo	Argent City Wal	0	0	0	0	1	0	1	0	1	0

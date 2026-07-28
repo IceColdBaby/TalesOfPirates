@@ -1,0 +1,40 @@
+//No.	Name	Trigger interval	Transfer duration	Use effect script	Remove the effect of the script	Substitution principle	Manually Cancel	Can Move	Can use Skills	Can attack	Can trade	Can use items	It can be attacked	Can someone else use items	Can someone else use the skills	Invisible	Whether it is forced to show	Whether the backpack can be operated	Is it possible to talk to npc	Release effect number	Screen effect Client performance	Client performance indicator	State ground effect	Center point display	Stunning performance	Special effect performance	dummy1	Attacked special effects performance in this state	dummy2	ICON	Explanation	description	Manifestations	Remarks
+1	Burn	1	State_Rs_Tran	State_Rs_Add	State_Rs_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	112	0	0	115	2	0	0	0	e0013,0,0,0,0,0,0,0,0,0	Inflicts Burn Damage	15218966
+2	Healing Spring	3	State_Hfwq_Tran	State_Hfwq_Add	State_Hfwq_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	268	1	0	166	-1	0	0	0	s0122,0,0,0,0,0,0,0,0,0	Heals Target Continuously	1566795
+3	Cursed Fire	-1	State_Zzzh_Tran	State_Zzzh_Add	State_Zzzh_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	158	-1	0	0	0	s0119,0,0,0,0,0,0,0,0,0	Decreases Defense	15218966
+4	Poisoned	1	State_Zd_Tran	State_Zd_Add	State_Zd_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	250	2	0	0	0	e0012,0,0,0,0,0,0,0,0,0	Inflicts Poison Damage	15218966
+5	Counterguard	-1	State_Sdbz_Tran	State_Sdbz_Add	State_Sdbz_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	173	0	0	174	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+6	True Sight	-1	State_Syzy_Tran	0	0	1	0	1	1	1	1	1	1	1	1	1	0	1	1	0	0	0	-1	176	1	0	0	-1	0	0	0	s0116,0,0,0,0,0,0,0,0,0	Reveals Stealth	15218966
+7	Abyss Mire	-1	State_Synz_Tran	State_Synz_Add	State_Synz_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	240	-1	0	0	0	s0121,0,0,0,0,0,0,0,0,0	Decreases Movement Speed	15218966
+9	Thunderstorm	2	State_Larea_Tran	State_Larea_Add	State_Larea_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	7	292	0	0	0	0	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+10	Fog	2	State_Warea_Tran	State_Warea_Add	State_Warea_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	8	293	0	0	0	0	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+11	Tornado	2	State_Farea_Tran	State_Farea_Add	State_Farea_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	5	291	0	0	0	0	0	0	0	s0213,0,0,0,0,0,0,0,0,0	Traps Target in the Air	15218966
+12	Whirlpool	-1	State_Xw_Tran	State_Xw_Add	State_Xw_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	280	1	0	0	0	0	0	0	s0218,0,0,0,0,0,0,0,0,0	Decreases Movement Speed of Ship	15218966
+13	Fog	-1	State_Mw_Tran	State_Mw_Add	State_Mw_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	283	1	0	0	0	0	0	0	s0219,0,0,0,0,0,0,0,0,0	Decreases Attack of Ship	15218966
+14	Lightning Curtain	2	State_Lm_Tran	State_Lm_Add	State_Lm_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	290	1	0	0	0	0	0	0	s0220,0,0,0,0,0,0,0,0,0	Inflicts Lightning Damage	15218966
+15	Taunt	-1	0	State_Chf_Add	State_Chf_Rem	4	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	s0128,0,0,0,0,0,0,0,0,0	Does Nothing	15218966
+16	Water Mine Self Destruct	1	0	State_Slzb_Add	State_Slzb_Rem	1	0	0	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	302	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+17	Bull Potion	-1	0	State_PKMNYS_Add	State_PKMNYS_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	n0290,0,0,0,0,0,0,0,0,0	Increases Max HP	1566795
+18	Hairstyling	-1	0	0	0	1	0	0	0	0	0	0	1	1	1	1	1	0	0	0	0	0	-1	0	0	0	0	0	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+19	Battle Potion	-1	0	State_PKZDYS_Add	State_PKZDYS_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	n0426,0,0,0,0,0,0,0,0,0	Increases Attack Power	1566795
+20	Berserk Potion	-1	0	State_PKKBYS_Add	State_PKKBYS_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	n0351,0,0,0,0,0,0,0,0,0	Increases Attack Speed	1566795
+21	Shield Mastery	-1	0	State_Dpsl_Add	State_Dpsl_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	0	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+22	Tiger Roar	-1	0	State_Hx_Add	State_Hx_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	295	-1	0	0	0	s0127,0,0,0,0,0,0,0,0,0	Decreases Attack and Movement Speed	15218966
+23	Greatsword Mastery	-1	0	State_Jjsl_Add	State_Jjsl_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	0	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+24	Berserk	-1	0	State_Kb_Add	State_Kb_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	118	1	0	0	0	s0084,0,0,0,0,0,0,0,0,0	Increases Attack Speed	1566795
+26	Skill Forbidden	-1	0	0	0	1	0	1	0	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	178	1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+27	Fatal Strike	-1	0	0	0	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	178	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+28	Ranger	-1	0	State_Clxz_Add	State_Clxz_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+29	Tempest Boost	-1	0	State_Fzlz_Add	State_Fzlz_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	207	1	0	0	0	s0101,0,0,0,0,0,0,0,0,0	Increases Attack Speed and Movement Speed	1566795
+30	Archery Mastery	-1	0	State_Gjsl_Add	State_Gjsl_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+31	Evasion	-1	0	State_Hys_Add	State_Hys_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+33	Tornado Swirl	-1	0	State_Jsfb_Add	State_Jsfb_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	208	1	0	0	0	s0102,0,0,0,0,0,0,0,0,0	Increases Critical Hit Chance	1566795
+34	Tempest Slash	-1	0	State_Jfz_Add	State_Jfz_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+35	Gun Research	-1	0	State_Qxyj_Add	State_Qxyj_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+36	Beast Strength	-1	0	State_Shtz_Add	State_Shtz_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+37	Angelic Shield	-1	0	State_Tshd_Add	State_Tshd_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	161	1	0	0	0	s0103,0,0,0,0,0,0,0,0,0	Greatly Increases Defense	1566795
+38	Angel Blessing	-1	0	State_Tsqy_Add	State_Tsqy_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	166	-1	0	0	0	0,0,0,0,0,0,0,0,0,0	0	1566795
+39	Cripple	-1	0	State_Tj_Add	State_Tj_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	143	1	0	0	0	s0094,0,0,0,0,0,0,0,0,0	Decreases Movement Speed and Dodge	15218966
+40	Spiritual Fire	-1	0	State_Xlzh_Add	State_Xlzh_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	206	1	0	0	0	s0100,0,0,0,0,0,0,0,0,0	Increases Attack	1566795
+41	Energy Potion	-1	0	State_PKJSYS_Add	State_PKJSYS_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	q0027,0,0,0,0,0,0,0,0,0	Increases Spirit	1566795
+42	Harden Potion	-1	0	State_PKSFYS_Add	State_PKSFYS_Rem	1	0	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	-1	0	0	0	0	-1	0	0	0	n0133,0,0,0,0,0,0,0,0,0	Increases Defense	1566795

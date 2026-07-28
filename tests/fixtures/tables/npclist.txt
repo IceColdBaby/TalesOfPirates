@@ -1,0 +1,40 @@
+//	ID	NPC	Map	Coordinates	Continent
+1	Argent Teleporter - Jovial	Argent City	2187,2776	Ascaron
+2	Argent Secretary - Salvier	Argent City	2219,2749	Ascaron
+3	Blacksmith - Goldie	Argent City	2193,2706	Ascaron
+4	Castle Guard - Peter	Argent City	2192,2767	Ascaron
+5	Citizen - Margaret	Argent City	2279,2746	Ascaron
+6	Granny Beldi	Argent City	2277,2769	Ascaron
+7	Little Daniel	Argent City	2193,2730	Ascaron
+8	Trader - Chiroro	Argent City	2331,2821	Ascaron
+9	Physican - Ditto	Argent City	2250,2770	Ascaron
+10	Banker - Monica	Argent City	2220,2704	Ascaron
+11	Innkeeper - Marriam	Argent City	2211,2781	Ascaron
+12	Forbei	Argent City	2226,2726	Ascaron
+13	Sailer - Coddy	Argent City	2219,2911	Ascaron
+14	General - William	Argent City	2277,2831	Ascaron
+15	Nurse - Gina	Argent City	2244,2770	Ascaron
+16	Shaitan Ambassador - Xiba	Argent City	2256,2706	Ascaron
+17	Argent Chairman - Ronnie	Argent City	2241,2748	Ascaron
+18	Oldman - Blurry	Argent City	2272,2700	Ascaron
+19	Grocery - Jimberry	Argent City	2232,2729	Ascaron
+20	Tailor - Granny Nila	Argent City	2267,2704	Ascaron
+21	Assistant - Rouri	Argent City	2240,2752	Ascaron
+22	Newbie Guide - Senna	Argent City	2223,2785	Ascaron
+23	Barmaid - Donna	Argent City	2224,2887	Ascaron
+24	Tourist - Ja	Argent City	2215,2828	Ascaron
+25	Drunkyard - Anthony	Argent City	2222,2889	Ascaron
+26	Youth - Tommy	Belmont Plains	1962,2694	Ascaron
+27	Manufacturer - Desmond	Belmont Plains	1732,2782	Ascaron
+28	D EDITION - SMUGGLING BUNNY	Belmont Plains	2298,2520	Ascaron
+29	Navy Commander - Dessaro	Thundoria Castle	713,1416	Ascaron
+30	Bar Waitress - Mona	Thundoria Harbor	990,1263	Ascaron
+31	Sailor - Dio	Thundoria Harbor	1083,1285	Ascaron
+32	Trader - Sanjay	Thundoria Harbor	1003,1306	Ascaron
+33	Doctor - Masa	Thundoria Castle	773,1549	Ascaron
+34	Banker - Macurdo	Thundoria Castle	743,1534	Ascaron
+35	Blacksmith - Furlington	Thundoria Castle	766,1447	Ascaron
+36	Girl - Cindy	Thundoria Castle	740,1451	Ascaron
+37	Shaitan Ambassador - Alix	Thundoria Castle	712,1508	Ascaron
+38	Tools - Wesley	Thundoria Castle	741,1563	Ascaron
+39	Innkeeper - Granny Maya	Thundoria Castle	697,1542	Ascaron

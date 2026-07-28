@@ -1,0 +1,10 @@
+{
+  "name": "com.top.tables",
+  "version": "0.1.0",
+  "displayName": "Top.Tables",
+  "description": "Game data table loading for Tales of Pirates.",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.top.text": "0.1.0"
+  }
+}

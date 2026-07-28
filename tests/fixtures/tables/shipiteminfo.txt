@@ -1,0 +1,40 @@
+//ID	Name	Model	Propeller 1	Propeller 2	Propeller 3	Propeller 4	Price	Ship Durability Constant	Ship durability recovery constant	Ship defense constant	Ship Resist Constant	Ship Min Attack constant	Average ship maximum attack	Attack range constant	Reloading time constant	Average Cannon Splash Area	Cargo Capacity Constant	Ship fuel constant	Ship fuel consumption constant	Cannon flight speed constant	Ship movement speed constant	Description (Item level)	Remark
+0001	Titanic Hull	2000000000	0	0	0	0	31237	4286	0	78	20	0	0	0	0	0	0	200	2	0	0	0	0
+0002	Silver Dolphin	2000010000	0	0	0	0	46200	5000	0	89	20	0	0	0	0	0	0	200	3	0	0	0	0
+0003	Great White Shark	2000020000	0	0	0	0	65362	5731	0	100	20	0	0	0	0	0	0	200	3	0	0	0	0
+0004	Frock Hull	2001000000	0	0	0	0	31237	6082	0	127	25	0	0	0	0	0	0	200	2	0	0	0	0
+0005	Goddess	2001010000	0	0	0	0	46200	7441	0	155	25	0	0	0	0	0	0	200	3	0	0	0	0
+0006	Titanium Hull	2002000000	0	0	0	0	65362	8945	0	183	25	0	0	0	0	0	0	200	3	0	0	0	0
+0007	Ark	2003000000	0	0	0	0	0	1000	0	20	20	0	0	0	0	0	0	200	2	0	0	0	0
+0008	Normal Bow	0	0	0	0	0	720	0	0	0	0	0	0	0	0	0	0	300	0	0	0	0	0
+0009	Hard Bow	0	0	0	0	0	939	0	0	0	0	0	0	0	0	0	0	330	0	0	0	0	0
+0010	Special Bow	0	0	0	0	0	1201	0	0	0	0	0	0	0	0	0	0	360	0	0	0	0	0
+0011	Sharp Bow	0	0	0	0	0	1350	0	0	0	0	0	0	0	0	0	0	400	0	0	0	0	0
+0012	Long Bow	0	0	0	0	0	1682	0	0	0	0	0	0	0	0	0	0	430	0	0	0	0	0
+0013	Colliding Bow	0	0	0	0	0	2067	0	0	0	0	0	0	0	0	0	0	460	0	0	0	0	0
+0014	Collision Bow	0	0	0	0	0	2280	0	0	0	0	0	0	0	0	0	0	1000	0	0	0	0	0
+0015	Semi Auto Oar	0	0	0	0	0	900	0	0	0	0	0	0	0	0	0	0	0	0	0	450	0	0
+0016	Boiler Engine	0	0	0	0	0	1331	0	0	0	0	0	0	0	0	0	0	0	0	0	460	0	0
+0017	Steam Dual Pontoon	0	0	0	0	0	1687	0	0	0	0	0	0	0	0	0	0	0	0	0	470	0	0
+0018	Steam Buoy	0	0	0	0	0	2335	0	0	0	0	0	0	0	0	0	0	0	0	0	480	0	0
+0019	Bio Thrash 80	0	0	0	0	0	2850	0	0	0	0	0	0	0	0	0	0	0	0	0	490	0	0
+0020	Bio Thrash 90	0	0	0	0	0	3758	0	0	0	0	0	0	0	0	0	0	0	0	0	500	0	0
+0021	Turbo Propeller	2000000002	0022	0	0	0	4462	0	0	0	0	0	0	0	0	0	0	0	0	0	530	0	0
+0022	Demon Propeller 01	2000000004	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0023	Silver Propeller 01	2000010004	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0024	Silver Propeller 02	2000010005	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0025	Silver Propeller 03	2000010006	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0026	Silver Propeller 04	2000010007	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0027	White Shark Propeller 01	2000020004	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0028	White Shark Propeller 02	2000020005	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0029	Torrent Propeller 01	2001000004	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0030	Torrent Propeller 02	2001000005	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0031	Torrent Propeller 03	2001000006	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0032	Goddess Propeller 01	2001010004	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0033	Goddess Propeller 02	2001010005	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0034	Goddess Propeller 03	2001010006	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0035	Goddess Propeller 04	2001010007	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0036	Swordfish Propeller 01	2002000004	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0037	Swordfish Propeller 02	2002000005	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0038	Swordfish Propeller 03	2002000006	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+0039	Swordfish Propeller 04	2002000007	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0

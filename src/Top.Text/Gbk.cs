@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text;
 
 namespace Top.Text
@@ -8,6 +9,8 @@ namespace Top.Text
     /// </summary>
     public static class Gbk
     {
+        private static System.Collections.Generic.Dictionary<char, ushort> _encode;
+
         private static readonly byte[] Table = Convert.FromBase64String(Gbk936Table.PackedBase64);
 
         public static string GetString(byte[] data)
@@ -66,8 +69,6 @@ namespace Top.Text
             return sb.ToString();
         }
 
-        private static System.Collections.Generic.Dictionary<char, ushort> _encode;
-
         public static byte[] GetBytes(string s)
         {
             if (string.IsNullOrEmpty(s))
@@ -95,6 +96,22 @@ namespace Top.Text
             }
 
             return outp.ToArray();
+        }
+
+        public static string[] ReadLines(Stream stream)
+        {
+            using var buffer = new MemoryStream();
+            stream.CopyTo(buffer);
+
+            var text = GetString(buffer.GetBuffer(), 0, (int)buffer.Length);
+            var lines = text.Split('\n');
+
+            for (var i = 0; i < lines.Length; i++)
+            {
+                lines[i] = lines[i].TrimEnd('\r');
+            }
+
+            return lines;
         }
 
         private static void EnsureEncodeMap()

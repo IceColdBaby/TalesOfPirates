@@ -1,0 +1,40 @@
+1	wave1.par	Sea Wave	Sea Wave	0	0	-1	-1	1	0	0	-1
+2	dian.par	电球	Sea Wave	0	0	0	-1	0	0	0	-1
+3	shuihua01.par	大水花	大水花	0	0	0	-1	0	0	0	-1
+4	shuihua02.par	水花	Sea Wave	0	0	0	-1	0	0	0	-1
+5	guang.par	光	Sea Wave	0	0	0	-1	0	0	0	-1
+6	blacksmoke.par	黑烟	Sea Wave	0	0	0	-1	0	0	0	-1
+7	xieguang.par	斜光	Sea Wave	0	0	0	-1	0	0	0	-1
+8	add.par	Fog	Sea Wave	0	0	0	-1	0	0	0	-1
+9	firefly.par	Firefly	Sea Wave	0	0	0	-1	0	0	0	-1
+10	00000002.par	火焰	Sea Wave	0	0	0	-1	0	0	0	-1
+11	00000003.par	火焰2	Sea Wave	0	0	0	-1	0	0	0	-1
+12	wave2.par	海浪2	Sea Wave	0	0	0	-1	0	0	0	-1
+13	whitesmoke.par	白烟	Sea Wave	0	0	0	-1	0	0	0	-1
+14	snow.par	Sbiw	Sea Wave	0	0	0	-1	0	0	0	-1
+15	00000007.par	沙岚火焰	Sea Wave	0	0	0	-1	0	0	0	-1
+16	sali.par	Sandstorm	Sea Wave	0	0	0	-1	0	0	0	-1
+17	ufo2.par	灵火2	Sea Wave	0	0	0	-1	0	0	0	-1
+18	ufo.par	灵火	Sea Wave	0	0	0	-1	0	0	0	-1
+95	00000001.par	30斜光	Sea Wave	0	0	0	-1	0	0	0	-1
+96	01030011.par	道具特效	Sea Wave	0	0	0	-1	0	0	0	-1
+97	waterwave1.par	水波	Sea Wave	1	0	-1	-1	0	0	0	-1
+98	waterwave2.par	水波2	Sea Wave	1	0	-1	-1	0	0	0	-1
+99	miss2.par	爆字	Sea Wave	0	0	0	1	0	0	0	-1
+100	wolf.par	Howl Unleashed	Sea Wave	0	0	-1	-1	0	1	0	-1
+101	01030006.par	Howl 命中	Sea Wave	0	0	-1	1	0	1	0	-1
+102	foot02.par	Tiger Roar 施放	Sea Wave	0	0	-1	-1	20	1	0	-1
+103	foot.par	Tiger Roar Hit Rate	Sea Wave	0	0	-2	1	0	1	0	-1
+104	runatktarget.par	连珠箭命中	Sea Wave	0	0	-1	-1	0	1	0	-1
+105	yfire.par	连珠箭施放	Sea Wave	0	0	-1	1	0	1	0	-1
+106	fallstar02.par	流星箭地面命中	Sea Wave	0	0	-1	-1	0	1	0	-1
+107	fallstar01.par	流星箭人物施放	Sea Wave	0	0	-1	1	0	1	0	-1
+108	01000004.par	Dispersion Bullet 施放	Sea Wave	0	0	-1	-1	0	1	0	-1
+109	01020005.par	Dispersion Bullet 命中	Sea Wave	0	0	-1	1	0	1	0	-1
+110	01020006.par	Penetrating Bullet 命中	Sea Wave	0	0	-1	-1	0	1	0	-1
+111	01010002.par	Magma Bullet 地面命中	Sea Wave	0	0	-1	1	0	1	0	-1
+112	01030001.par	Magma Bullet 地面持续	Sea Wave	0	0	-1	-1	0	1	0	-1
+113	heallight.pa	Greater Heal 施放	Sea Wave	0	0	-1	1	0	1	0	-1
+114	01020007.par	Greater Heal 命中	Sea Wave	0	0	-1	-1	0	1	0	-1
+115	01050013.par	Magma Bullet 人物持续	Sea Wave	0	0	-1	-1	0	1	0	-1
+116	01040024.par	Tiger Roar 人物持续	Sea Wave	0	0	-1	-1	0	1	0	-1

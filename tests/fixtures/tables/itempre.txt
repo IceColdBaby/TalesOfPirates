@@ -1,0 +1,40 @@
+// [Gemini.Datasets(v = 2.5, t = Gemini.Datasets.ItemType6C, s = 108, n = 100)]
+0	0
+1	Mammoth 
+2	Precise 
+3	Colossus 
+4	Tempest 
+5	Sage 
+6	0
+7	0
+8	0
+9	0
+10	0
+11	Black Dragon 
+12	Red Dragon 
+13	Blue Dragon 
+14	Silver Dragon 
+15	Draconic 
+16	Emerald Dragon 
+17	Amber Dragon 
+18	Gold Dragon 
+19	Sacred Dragon 
+20	Demonic Dragon 
+21	0
+22	0
+23	0
+24	0
+25	0
+26	0
+27	0
+28	0
+29	0
+30	Trash 
+31	Noob 
+32	Unholy 
+33	Cursed 
+34	Unlucky 
+35	Normal 
+36	Uncommon 
+37	Remarkable 
+38	Epic 

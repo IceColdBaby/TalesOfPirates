@@ -19,10 +19,12 @@
     <Project Path="src/Top.MindPower/Top.MindPower.csproj" />
     <Project Path="src/Top.Text/Top.Text.csproj" />
     <Project Path="src/Top.Gltf/Top.Gltf.csproj" />
+    <Project Path="src/Top.Tables/Top.Tables.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Top.MindPower.Tests/Top.MindPower.Tests.csproj" />
     <Project Path="tests/Top.Text.Tests/Top.Text.Tests.csproj" />
     <Project Path="tests/Top.Gltf.Tests/Top.Gltf.Tests.csproj" />
+    <Project Path="tests/Top.Tables.Tests/Top.Tables.Tests.csproj" />
   </Folder>
 </Solution>

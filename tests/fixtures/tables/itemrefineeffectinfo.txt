@@ -1,0 +1,40 @@
+//ID	Name	?	ID 1 (Lance)	ID 1 (Carsise)	ID 1 (Phyllis)	ID 1 (Ami)	? 1	ID 2 (Lance)	ID 2 (Carsise)	ID 2 (Phyllis)	ID 2 (Ami)	? 2	ID 3 (Lance)	ID 3 (Carsise)	ID 3 (Phyllis)	ID 3 (Ami)	? 3	ID 4 (Lance)	ID 4 (Carsise)	ID 4 (Phyllis)	ID 4 (Ami)	? 4
+1	Staff Bonus	3	0	0	300	300	4	0	0	301	301	4	0	0	302	302	0	0	0	0	0	0
+2	Great Attack	1	303	303	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+3	Single Hand Sword Attack	1	304	304	304	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+4	Dagger Attack	1	305	0	305	305	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+5	Gun Attack	1	306	0	306	0	3	307	0	307	0	1	0	0	0	0	0	0	0	0	0	0
+6	Staff Defense	2	0	0	308	308	4	0	0	309	309	4	0	0	310	310	0	0	0	0	0	0
+7	Staff Attack	1	0	0	311	311	4	0	0	312	312	4	0	0	313	313	0	0	0	0	0	0
+8	Great Defense	2	317	317	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+9	Single Hand Sword Defense	2	318	318	318	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+10	Dagger Defense	2	319	0	319	319	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+11	Hugh Bonus	3	314	314	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+12	Single Hand Sword Bonus	3	315	315	315	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+13	Dagger Bonus	3	316	0	316	316	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+14	Gun Defense	2	320	0	320	0	3	321	0	321	0	1	0	0	0	0	0	0	0	0	0	0
+15	Gun Bonus	3	322	0	322	0	3	323	0	323	0	1	0	0	0	0	0	0	0	0	0	0
+16	Staff Bonus Defense	2	0	0	300	300	4	0	0	301	301	4	0	0	310	310	0	0	0	0	0	0
+17	Staff Bonus add Attack	3	0	0	311	311	4	0	0	309	309	4	0	0	302	302	0	0	0	0	0	0
+18	Staff Attack Added Defense	1	0	0	308	308	4	0	0	312	312	4	0	0	313	313	0	0	0	0	0	0
+19	Staff Parry Bonus	1	0	0	325	325	4	0	0	301	301	4	0	0	324	324	0	0	0	0	0	0
+20	Great Bonus Add Defense	3	326	326	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+21	Great Bonus adds Attack	1	329	329	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+22	Great Attack Add Defense	2	332	332	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+23	Great Parry Bonus	1	335	335	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+24	Sword Bonus Defense	3	327	327	327	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+25	Sword Bonus add Attack	1	330	330	330	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+26	Sword Attack Added Defense	2	333	333	333	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+27	Sword Parry Bonus	1	336	336	336	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+28	Dagger Bonus Defense	3	328	0	328	328	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+29	Dagger Bonus adds Attack	1	331	0	331	331	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+30	Dagger Attack Adds Defense	2	334	0	334	334	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+31	DaggerParry Bonus	1	337	0	337	337	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+32	Gun Defense adds Bonus	2	320	0	320	0	3	323	0	323	0	1	0	0	0	0	0	0	0	0	0	0
+33	Gun Bonus Attack	3	322	0	322	0	3	307	0	307	0	1	0	0	0	0	0	0	0	0	0	0
+34	Gun Defense adds Attack	1	320	0	320	0	3	307	0	307	0	1	0	0	0	0	0	0	0	0	0	0
+35	Gun Attack Defense Bonus	2	338	0	338	0	3	339	0	339	0	1	0	0	0	0	0	0	0	0	0	0
+36	Bow Attack	1	340	0	340	0	0	341	0	341	0	4	341	0	341	0	5	0	0	0	0	0
+37	Bow Bonus	3	342	0	342	0	0	343	0	343	0	4	343	0	343	0	5	0	0	0	0	0
+38	Bow Defense	2	344	0	344	0	0	345	0	345	0	4	345	0	345	0	5	0	0	0	0	0
+39	Bow Defense + Attack	1	347	0	347	0	0	341	0	341	0	4	341	0	341	0	5	0	0	0	0	0

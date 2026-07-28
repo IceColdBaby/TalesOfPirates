@@ -1,3 +1,4 @@
+using System.IO;
 using NUnit.Framework;
 
 namespace Top.Text.Tests
@@ -60,6 +61,23 @@ namespace Top.Text.Tests
         {
             Assert.AreEqual(new byte[0], Gbk.GetBytes(null));
             Assert.AreEqual(new byte[0], Gbk.GetBytes(""));
+        }
+
+        [Test]
+        public void ReadLines_decodes_gbk_and_splits_crlf()
+        {
+            // GBK bytes for the two hanzi of "zhong wen" (0xD6D0 0xCEC4) between ASCII lines.
+            var bytes = new byte[]
+            {
+                (byte)'a', (byte)'\r', (byte)'\n',
+                0xD6, 0xD0, 0xCE, 0xC4, (byte)'\n',
+                (byte)'b',
+            };
+            using var stream = new MemoryStream(bytes);
+
+            var lines = Gbk.ReadLines(stream);
+
+            Assert.That(lines, Is.EqualTo(new[] { "a", "中文", "b" }));
         }
     }
 }

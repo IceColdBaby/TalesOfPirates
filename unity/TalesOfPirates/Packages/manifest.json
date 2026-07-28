@@ -3,6 +3,7 @@
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
     "com.top.engine": "file:../../packages/com.top.engine",
     "com.top.mindpower": "file:../../../src/Top.MindPower",
+    "com.top.tables": "file:../../../src/Top.Tables",
     "com.top.gltf": "file:../../../src/Top.Gltf",
     "com.top.text": "file:../../../src/Top.Text",
     "com.unity.ai.navigation": "2.0.14",
