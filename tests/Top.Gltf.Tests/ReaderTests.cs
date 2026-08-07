@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
 namespace Top.Gltf.Tests
@@ -206,6 +207,28 @@ namespace Top.Gltf.Tests
 
             Assert.That(data.ReadFloats(0), Is.EqualTo(new[] { 2.5f }));
             Assert.That(requested, Is.EqualTo("my file.bin"));
+        }
+
+        [Test]
+        public void Material_extras_survive_a_glb_round_trip()
+        {
+            (GltfDocument doc, byte[] bin) = WriterTests.BuildTriangle();
+            doc.Materials =
+            [
+                new GltfMaterial
+                {
+                    Name = "mat",
+                    Extras = new JObject { ["vendor"] = new JObject { ["depth"] = 3 } },
+                }
+            ];
+
+            using var ms = new MemoryStream();
+            GltfWriter.WriteGlb(doc, bin, ms);
+            ms.Position = 0;
+
+            var extras = GltfReader.Read(ms).Document.Materials[0].Extras;
+
+            Assert.That(extras["vendor"]["depth"].Value<int>(), Is.EqualTo(3));
         }
 
         [Test]

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Top.Assets.Conversion</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Top.Assets.Contract\Top.Assets.Contract.csproj" />
+    <ProjectReference Include="..\Top.Logging\Top.Logging.csproj" />
+    <ProjectReference Include="..\Top.MindPower\Top.MindPower.csproj" />
+    <ProjectReference Include="..\Top.Gltf\Top.Gltf.csproj" />
+    <ProjectReference Include="..\Top.Tables\Top.Tables.csproj" />
+  </ItemGroup>
+</Project>

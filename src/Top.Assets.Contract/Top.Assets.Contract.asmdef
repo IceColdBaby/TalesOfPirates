@@ -1,0 +1,17 @@
+{
+    "name": "Top.Assets.Contract",
+    "rootNamespace": "Top.Assets.Contract",
+    "references": [
+        "Top.Gltf",
+        "Top.Logging"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

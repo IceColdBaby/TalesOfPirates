@@ -24,6 +24,7 @@ namespace Top.Tables.Records
         Necklace = 25,
         Ring = 26,
         Tattoo = 27,
+        Hairdo = 28,
         Conch = 29,
         Medicine = 31,
         Ovum = 32,

@@ -6,7 +6,7 @@ namespace Top.MindPower.Geometry
     /// </summary>
     public class MaterialTexture
     {
-        public float Opacity;
+        public float Opacity = 1f;
         public TransparencyType Transparency;
         public MaterialDefinition Material;
         public RenderStateAtom[] RenderStates;

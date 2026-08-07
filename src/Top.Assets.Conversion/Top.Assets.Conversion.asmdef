@@ -1,0 +1,20 @@
+{
+    "name": "Top.Assets.Conversion",
+    "rootNamespace": "Top.Assets.Conversion",
+    "references": [
+        "Top.Assets.Contract",
+        "Top.Logging",
+        "Top.MindPower",
+        "Top.Gltf",
+        "Top.Tables"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

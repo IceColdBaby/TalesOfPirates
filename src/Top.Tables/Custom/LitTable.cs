@@ -34,7 +34,7 @@ namespace Top.Tables.Custom
                 var t = tokens[pos];
                 pos++;
                 line = t.Line;
-                return t.Token;
+                return t.Text;
             }
 
             var table = new LitTable();
@@ -104,9 +104,9 @@ namespace Top.Tables.Custom
             return strings;
         }
 
-        private static List<(string Token, int Line)> Tokenize(string[] lines)
+        private static List<Token> Tokenize(string[] lines)
         {
-            var tokens = new List<(string, int)>();
+            var tokens = new List<Token>();
 
             for (var i = 0; i < lines.Length; i++)
             {
@@ -117,10 +117,16 @@ namespace Top.Tables.Custom
 
                 tokens.AddRange(lines[i]
                     .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(token => (token, i + 1)));
+                    .Select(text => new Token { Text = text, Line = i + 1 }));
             }
 
             return tokens;
+        }
+
+        private class Token
+        {
+            public string Text;
+            public int Line;
         }
     }
 }

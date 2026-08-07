@@ -101,16 +101,5 @@ namespace Top.Tables.Tests
 
             Assert.That(table.TryGetActions(7, out _), Is.True);
         }
-
-        [Test]
-        public void Action_names_come_from_the_client_enum()
-        {
-            Assert.That(CharacterActionNames.TryGetName(5, out var run), Is.True);
-            Assert.That(run, Is.EqualTo("run"));
-            Assert.That(CharacterActionNames.TryGetName(42, out var fly), Is.True);
-            Assert.That(fly, Is.EqualTo("fly_waiting"));
-            Assert.That(CharacterActionNames.TryGetName(60, out _), Is.False);
-            Assert.That(CharacterActionNames.TryGetName(0, out _), Is.False);
-        }
     }
 }

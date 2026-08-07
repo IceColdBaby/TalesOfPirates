@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+    "com.top.assets.contract": "file:../../../src/Top.Assets.Contract",
+    "com.top.assets.conversion": "file:../../../src/Top.Assets.Conversion",
     "com.top.engine": "file:../../packages/com.top.engine",
+    "com.top.logging": "file:../../../src/Top.Logging",
     "com.top.mindpower": "file:../../../src/Top.MindPower",
     "com.top.tables": "file:../../../src/Top.Tables",
     "com.top.gltf": "file:../../../src/Top.Gltf",

@@ -17,6 +17,26 @@
       },
       "hash": "c14de1e6dc01ab42d2bb358730cff954bce0ce6b"
     },
+    "com.top.assets.contract": {
+      "version": "file:../../../src/Top.Assets.Contract",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.top.gltf": "0.1.0",
+        "com.top.logging": "0.1.0"
+      }
+    },
+    "com.top.assets.conversion": {
+      "version": "file:../../../src/Top.Assets.Conversion",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.top.assets.contract": "0.1.0",
+        "com.top.mindpower": "0.1.0",
+        "com.top.gltf": "0.1.0",
+        "com.top.tables": "0.1.0"
+      }
+    },
     "com.top.engine": {
       "version": "file:../../packages/com.top.engine",
       "depth": 0,
@@ -29,6 +49,12 @@
     },
     "com.top.gltf": {
       "version": "file:../../../src/Top.Gltf",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.top.logging": {
+      "version": "file:../../../src/Top.Logging",
       "depth": 0,
       "source": "local",
       "dependencies": {}

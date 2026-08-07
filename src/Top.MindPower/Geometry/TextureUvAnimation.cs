@@ -6,7 +6,7 @@ namespace Top.MindPower.Geometry
     /// Per-stage texture-UV transform track.
     /// <br/> lwAnimDataTexUV (lwExpObj.h)
     /// </summary>
-    public sealed class TextureUvAnimation
+    public class TextureUvAnimation
     {
         public int Subset;
         public int Stage;

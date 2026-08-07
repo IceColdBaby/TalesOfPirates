@@ -1,0 +1,16 @@
+{
+    "name": "Top.Game",
+    "rootNamespace": "Top.Game",
+    "references": [
+        "Top.Logging"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
