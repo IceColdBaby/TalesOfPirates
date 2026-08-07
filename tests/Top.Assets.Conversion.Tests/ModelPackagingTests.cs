@@ -234,6 +234,7 @@ namespace Top.Assets.Conversion.Tests
         {
             return new GeometryObject
             {
+                ParentId = uint.MaxValue,
                 LocalMatrix = System.Numerics.Matrix4x4.Identity,
                 Materials =
                 [

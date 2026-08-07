@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using NUnit.Framework;
 using Top.Assets.Conversion.Models.Gltf;
 using Top.Gltf;
@@ -98,7 +99,29 @@ namespace Top.Assets.Conversion.Tests
         }
 
         [Test]
-        public void Child_objects_nest_under_their_parent_node()
+        public void Child_objects_nest_under_the_node_their_parent_index_names()
+        {
+            var model = new SceneModel
+            {
+                GeometryObjects =
+                [
+                    Fixtures.MakeObject(id: 5, parentId: uint.MaxValue),
+                    Fixtures.MakeObject(id: 9, parentId: 0)
+                ],
+                Helpers = [],
+            };
+
+            var doc = GltfExport.Model("synthetic", model).Document;
+
+            Assert.That(doc.Scenes[0].Nodes, Is.EqualTo(new[] { 0 }),
+                "only the parent is a scene root");
+            Assert.That(doc.Nodes[0].Name, Is.EqualTo("geom_5"));
+            Assert.That(doc.Nodes[0].Children, Is.EqualTo(new[] { 1 }));
+            Assert.That(doc.Nodes[1].Name, Is.EqualTo("geom_9"));
+        }
+
+        [Test]
+        public void A_parent_index_past_the_sequence_leaves_the_object_a_root()
         {
             var model = new SceneModel
             {
@@ -112,11 +135,35 @@ namespace Top.Assets.Conversion.Tests
 
             var doc = GltfExport.Model("synthetic", model).Document;
 
-            Assert.That(doc.Scenes[0].Nodes, Is.EqualTo(new[] { 0 }),
-                "only the parent is a scene root");
-            Assert.That(doc.Nodes[0].Name, Is.EqualTo("geom_5"));
-            Assert.That(doc.Nodes[0].Children, Is.EqualTo(new[] { 1 }));
-            Assert.That(doc.Nodes[1].Name, Is.EqualTo("geom_9"));
+            Assert.That(doc.Scenes[0].Nodes, Is.EqualTo(new[] { 0, 1 }));
+        }
+
+        [Test]
+        public void Matrix_animation_stays_on_the_object_that_carries_it_when_ids_repeat()
+        {
+            var model = new SceneModel
+            {
+                GeometryObjects =
+                [
+                    Fixtures.MakeObject(id: 5, parentId: uint.MaxValue),
+                    Fixtures.MakeObject(id: 5, parentId: uint.MaxValue)
+                ],
+                Helpers = [],
+            };
+
+            model.GeometryObjects[0].Animation = new AnimationData
+            {
+                Matrix = new MatrixAnimation
+                {
+                    Frames = [Matrix4x4.Identity, Matrix4x4.CreateTranslation(1f, 0f, 0f)],
+                },
+            };
+
+            var doc = GltfExport.Model("twins", model).Document;
+
+            Assert.That(doc.Animations, Has.Count.EqualTo(1));
+            Assert.That(doc.Animations[0].Channels.Select(c => c.Target.Node.Value).Distinct(),
+                Is.EqualTo(new[] { 0 }), "the first twin carries the animation");
         }
 
         [Test]

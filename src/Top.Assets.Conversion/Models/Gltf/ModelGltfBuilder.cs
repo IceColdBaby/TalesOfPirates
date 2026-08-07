@@ -26,9 +26,8 @@ namespace Top.Assets.Conversion.Models.Gltf
         private readonly string _name;
         private readonly MeshWriter _meshes;
         private readonly SkeletonWriter _skeletons;
-        private readonly Dictionary<uint, GltfNodeRef> _nodeByObjectId = new Dictionary<uint, GltfNodeRef>();
         private readonly List<SkinnedObject> _skinnedObjects = new List<SkinnedObject>();
-        private readonly HashSet<uint> _skinnedObjectIds = new HashSet<uint>();
+        private readonly HashSet<GeometryObject> _skinnedGeometry = new HashSet<GeometryObject>();
 
         private GltfSkinRef _skin;
         private int _helperIndex;
@@ -79,15 +78,16 @@ namespace Top.Assets.Conversion.Models.Gltf
 
         public void AddObjects(GeometryObject[] objects, Helper[] helpers)
         {
-            AddGeometry(objects);
-            Parent(objects);
+            var nodes = AddGeometry(objects);
+
+            Parent(objects, nodes);
             AddHelpers(helpers);
 
-            foreach (var obj in objects)
+            for (var i = 0; i < objects.Length; i++)
             {
-                if (!_skinnedObjectIds.Contains(obj.Id))
+                if (!_skinnedGeometry.Contains(objects[i]))
                 {
-                    AddMatrixAnimation(obj, _nodeByObjectId[obj.Id]);
+                    AddMatrixAnimation(objects[i], nodes[i]);
                 }
             }
 
@@ -136,10 +136,14 @@ namespace Top.Assets.Conversion.Models.Gltf
             }
         }
 
-        private void AddGeometry(GeometryObject[] objects)
+        private GltfNodeRef[] AddGeometry(GeometryObject[] objects)
         {
-            foreach (var obj in objects)
+            var nodes = new GltfNodeRef[objects.Length];
+            var ids = new HashSet<uint>();
+
+            for (var i = 0; i < objects.Length; i++)
             {
+                var obj = objects[i];
                 var skeleton = obj.Animation?.Bone;
                 var hasBlends = HasBlendData(obj.Mesh);
                 var skinned = skeleton != null && hasBlends;
@@ -153,13 +157,12 @@ namespace Top.Assets.Conversion.Models.Gltf
 
                 PlaceNode(obj, node, skinned);
 
-                if (_nodeByObjectId.ContainsKey(obj.Id))
+                if (!ids.Add(obj.Id))
                 {
-                    Log.Warning($"object id {obj.Id} occurs more than once, " +
-                                "the later object takes the name and its bindings");
+                    Log.Warning($"object id {obj.Id} occurs more than once, nodes share the name '{nodeName}'");
                 }
 
-                _nodeByObjectId[obj.Id] = node;
+                nodes[i] = node;
 
                 if (meshes.LitMesh != null)
                 {
@@ -171,6 +174,8 @@ namespace Top.Assets.Conversion.Models.Gltf
                     AddOwnSkeleton(obj, skeleton, node, nodeName);
                 }
             }
+
+            return nodes;
         }
 
         private void AddHelpers(Helper[] helpers)
@@ -283,7 +288,7 @@ namespace Top.Assets.Conversion.Models.Gltf
 
             node.WithSkin(_skeletons.AddSkin(skeleton, boneNodes, nodeName));
             _skinnedObjects.Add(new SkinnedObject { Object = obj, Skeleton = skeleton, BoneNodes = boneNodes });
-            _skinnedObjectIds.Add(obj.Id);
+            _skinnedGeometry.Add(obj);
         }
 
         private void PlaceNode(GeometryObject obj, GltfNodeRef node, bool skinned)
@@ -317,24 +322,30 @@ namespace Top.Assets.Conversion.Models.Gltf
             }
         }
 
-        private void Parent(GeometryObject[] objects)
+        private void Parent(GeometryObject[] objects, GltfNodeRef[] nodes)
         {
-            foreach (var obj in objects)
+            for (var i = 0; i < objects.Length; i++)
             {
-                var node = _nodeByObjectId[obj.Id];
+                var parentIndex = objects[i].ParentId;
 
-                if (obj.ParentId != uint.MaxValue && _nodeByObjectId.TryGetValue(obj.ParentId, out var parent))
+                if (parentIndex != uint.MaxValue && parentIndex < objects.Length && parentIndex != i)
                 {
-                    if (_skinnedObjectIds.Contains(obj.Id))
+                    if (_skinnedGeometry.Contains(objects[i]))
                     {
-                        Log.Warning($"object {obj.Id} is skinned, its parent {obj.ParentId} is ignored");
+                        Log.Warning($"object {objects[i].Id} is skinned, its parent link is ignored");
                     }
 
-                    parent.AddChild(node);
+                    nodes[parentIndex].AddChild(nodes[i]);
                 }
                 else
                 {
-                    node.AsRoot();
+                    if (parentIndex != uint.MaxValue)
+                    {
+                        Log.Warning($"object {objects[i].Id} has no resolvable parent " +
+                                    $"at index {parentIndex}, kept as a root");
+                    }
+
+                    nodes[i].AsRoot();
                 }
             }
         }
