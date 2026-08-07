@@ -17,6 +17,14 @@
       },
       "hash": "c14de1e6dc01ab42d2bb358730cff954bce0ce6b"
     },
+    "com.top.assets": {
+      "version": "file:../../packages/com.top.assets",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.top.assets.contract": "0.1.0"
+      }
+    },
     "com.top.assets.contract": {
       "version": "file:../../../src/Top.Assets.Contract",
       "depth": 0,
@@ -35,6 +43,16 @@
         "com.top.mindpower": "0.1.0",
         "com.top.gltf": "0.1.0",
         "com.top.tables": "0.1.0"
+      }
+    },
+    "com.top.assets.gltf": {
+      "version": "file:../../packages/com.top.assets.gltf",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.top.assets": "0.1.0",
+        "com.top.assets.contract": "0.1.0",
+        "com.top.gltf": "0.1.0"
       }
     },
     "com.top.engine": {

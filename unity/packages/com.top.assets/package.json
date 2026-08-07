@@ -1,0 +1,10 @@
+{
+  "name": "com.top.assets",
+  "version": "0.1.0",
+  "displayName": "Top.Assets",
+  "description": "Content realization primitives.",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.top.assets.contract": "0.1.0"
+  }
+}
