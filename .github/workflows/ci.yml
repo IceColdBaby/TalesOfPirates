@@ -20,7 +20,9 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-      - run: dotnet test tests/Top.Gltf.Tests/Top.Gltf.Tests.csproj --configuration Release --filter "TestCategory=EmitSamples"
+      - run: >
+          dotnet test tests/Top.Conversion.Gltf.Tests/Top.Conversion.Gltf.Tests.csproj
+          --configuration Release --filter "TestCategory=EmitSamples"
       - name: Validate emitted glTF
         run: |
           curl -sL -o validator.tar.xz https://github.com/KhronosGroup/glTF-Validator/releases/download/2.0.0-dev.3.10/gltf_validator-2.0.0-dev.3.10-linux64.tar.xz

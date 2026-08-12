@@ -1,7 +1,0 @@
-{
-  "name": "com.top.text",
-  "version": "0.1.0",
-  "displayName": "Top.Text",
-  "description": "Text encodings for Tales of Pirates file formats (GBK/cp936 decoder).",
-  "unity": "6000.0"
-}

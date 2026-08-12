@@ -1,7 +1,0 @@
-{
-  "name": "com.top.gltf",
-  "version": "0.1.0",
-  "displayName": "Top.Gltf",
-  "description": "glTF 2.0 subset reader and writer.",
-  "unity": "6000.0"
-}

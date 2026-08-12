@@ -1,0 +1,21 @@
+{
+    "name": "Top.Client.Assets.Models",
+    "rootNamespace": "Top.Client.Assets.Models",
+    "references": [
+        "Top.Contracts.Assets",
+        "Top.Logging",
+        "glTFast",
+        "glTFast.Newtonsoft",
+        "Unity.Mathematics",
+        "Unity.Collections"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

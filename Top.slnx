@@ -17,20 +17,20 @@
 
   <Folder Name="/src/">
     <Project Path="src/Top.Logging/Top.Logging.csproj" />
-    <Project Path="src/Top.MindPower/Top.MindPower.csproj" />
-    <Project Path="src/Top.Text/Top.Text.csproj" />
-    <Project Path="src/Top.Gltf/Top.Gltf.csproj" />
-    <Project Path="src/Top.Tables/Top.Tables.csproj" />
-    <Project Path="src/Top.Assets.Contract/Top.Assets.Contract.csproj" />
-    <Project Path="src/Top.Assets.Conversion/Top.Assets.Conversion.csproj" />
+    <Project Path="src/Top.Legacy.MindPower/Top.Legacy.MindPower.csproj" />
+    <Project Path="src/Top.Legacy.Text/Top.Legacy.Text.csproj" />
+    <Project Path="src/Top.Conversion.Gltf/Top.Conversion.Gltf.csproj" />
+    <Project Path="src/Top.Legacy.Tables/Top.Legacy.Tables.csproj" />
+    <Project Path="src/Top.Contracts.Assets/Top.Contracts.Assets.csproj" />
+    <Project Path="src/Top.Conversion/Top.Conversion.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Top.Logging.Tests/Top.Logging.Tests.csproj" />
-    <Project Path="tests/Top.MindPower.Tests/Top.MindPower.Tests.csproj" />
-    <Project Path="tests/Top.Text.Tests/Top.Text.Tests.csproj" />
-    <Project Path="tests/Top.Gltf.Tests/Top.Gltf.Tests.csproj" />
-    <Project Path="tests/Top.Tables.Tests/Top.Tables.Tests.csproj" />
-    <Project Path="tests/Top.Assets.Contract.Tests/Top.Assets.Contract.Tests.csproj" />
-    <Project Path="tests/Top.Assets.Conversion.Tests/Top.Assets.Conversion.Tests.csproj" />
+    <Project Path="tests/Top.Legacy.MindPower.Tests/Top.Legacy.MindPower.Tests.csproj" />
+    <Project Path="tests/Top.Legacy.Text.Tests/Top.Legacy.Text.Tests.csproj" />
+    <Project Path="tests/Top.Conversion.Gltf.Tests/Top.Conversion.Gltf.Tests.csproj" />
+    <Project Path="tests/Top.Legacy.Tables.Tests/Top.Legacy.Tables.Tests.csproj" />
+    <Project Path="tests/Top.Contracts.Assets.Tests/Top.Contracts.Assets.Tests.csproj" />
+    <Project Path="tests/Top.Conversion.Tests/Top.Conversion.Tests.csproj" />
   </Folder>
 </Solution>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Top.Conversion</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Top.Contracts.Assets\Top.Contracts.Assets.csproj" />
+    <ProjectReference Include="..\Top.Logging\Top.Logging.csproj" />
+    <ProjectReference Include="..\Top.Legacy.MindPower\Top.Legacy.MindPower.csproj" />
+    <ProjectReference Include="..\Top.Conversion.Gltf\Top.Conversion.Gltf.csproj" />
+    <ProjectReference Include="..\Top.Legacy.Tables\Top.Legacy.Tables.csproj" />
+  </ItemGroup>
+</Project>
