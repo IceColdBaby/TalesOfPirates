@@ -25,24 +25,27 @@ namespace Top.Conversion.Tests
 
         public List<string> Errors { get; } = [];
 
-        public void Write(string message)
+        public void Write(LogLevel level, string message, Exception exception)
         {
-            Messages.Add(message);
-        }
+            var text = exception == null ? message : $"{message}: {exception.Message}";
 
-        public void WriteWarning(string message)
-        {
-            Warnings.Add(message);
-        }
+            switch (level)
+            {
+                case LogLevel.Warning:
+                    Warnings.Add(text);
 
-        public void WriteError(string message, Exception exception)
-        {
-            Errors.Add(exception == null ? message : $"{message}: {exception.Message}");
-        }
+                    break;
 
-        public void WriteDebug(string message)
-        {
-            Messages.Add(message);
+                case LogLevel.Error:
+                    Errors.Add(text);
+
+                    break;
+
+                default:
+                    Messages.Add(text);
+
+                    break;
+            }
         }
 
         public void Dispose()

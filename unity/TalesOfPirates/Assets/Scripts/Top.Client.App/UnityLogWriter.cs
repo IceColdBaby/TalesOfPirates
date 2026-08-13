@@ -27,26 +27,27 @@ namespace Top.Client.App
         }
 #endif
 
-        public void Write(string message)
+        public void Write(LogLevel level, string message, Exception exception)
         {
-            Debug.Log(Tag + message);
-        }
+            var text = exception == null ? Tag + message : $"{Tag}{message}: {exception}";
 
-        public void WriteWarning(string message)
-        {
-            Debug.LogWarning(Tag + message);
-        }
+            switch (level)
+            {
+                case LogLevel.Warning:
+                    Debug.LogWarning(text);
 
-        public void WriteError(string message, Exception exception)
-        {
-            Debug.LogError(exception == null
-                ? Tag + message
-                : $"{Tag}{message}: {exception}");
-        }
+                    break;
 
-        public void WriteDebug(string message)
-        {
-            Debug.Log(Tag + message);
+                case LogLevel.Error:
+                    Debug.LogError(text);
+
+                    break;
+
+                default:
+                    Debug.Log(text);
+
+                    break;
+            }
         }
     }
 }

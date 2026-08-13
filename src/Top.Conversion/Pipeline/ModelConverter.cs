@@ -133,7 +133,7 @@ namespace Top.Conversion.Pipeline
             }
             catch (ParseException exception)
             {
-                Log.Warning($"failed to parse '{labPath}': {exception.Message}");
+                Log.Warning($"failed to parse '{labPath}'", exception);
 
                 return null;
             }

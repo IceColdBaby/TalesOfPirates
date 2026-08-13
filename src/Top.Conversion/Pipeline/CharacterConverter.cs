@@ -280,7 +280,7 @@ namespace Top.Conversion.Pipeline
                 }
                 catch (ParseException exception)
                 {
-                    Log.Warning($"failed to parse '{partPath}': {exception.Message}");
+                    Log.Warning($"failed to parse '{partPath}'", exception);
                 }
             }
 

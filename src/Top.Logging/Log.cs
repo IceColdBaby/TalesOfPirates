@@ -8,22 +8,22 @@ namespace Top.Logging
 
         public static void Info(string message)
         {
-            Writer?.Write(message);
+            Writer?.Write(LogLevel.Info, message, null);
         }
 
-        public static void Warning(string message)
+        public static void Warning(string message, Exception exception = null)
         {
-            Writer?.WriteWarning(message);
+            Writer?.Write(LogLevel.Warning, message, exception);
         }
 
         public static void Error(string message, Exception exception = null)
         {
-            Writer?.WriteError(message, exception);
+            Writer?.Write(LogLevel.Error, message, exception);
         }
 
         public static void Debug(string message)
         {
-            Writer?.WriteDebug(message);
+            Writer?.Write(LogLevel.Debug, message, null);
         }
     }
 }

@@ -236,7 +236,7 @@ namespace Top.Conversion.Models
                 }
                 catch (InvalidDataException exception)
                 {
-                    Log.Warning($"texture '{fileName}': {exception.Message}");
+                    Log.Warning($"texture '{fileName}'", exception);
                     continue;
                 }
 

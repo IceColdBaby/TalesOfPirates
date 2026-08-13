@@ -4,12 +4,6 @@ namespace Top.Logging
 {
     public interface ILogWriter
     {
-        void Write(string message);
-
-        void WriteWarning(string message);
-
-        void WriteError(string message, Exception exception);
-
-        void WriteDebug(string message);
+        void Write(LogLevel level, string message, Exception exception);
     }
 }

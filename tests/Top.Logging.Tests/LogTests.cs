@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Top.Logging.Tests
@@ -31,12 +32,11 @@ namespace Top.Logging.Tests
             Log.Error("broken");
             Log.Debug("noisy");
 
-            Assert.That(capture.Messages, Is.EqualTo(new[] { "plain" }));
-            Assert.That(capture.Warnings, Is.EqualTo(new[] { "careful" }));
-            Assert.That(capture.DebugMessages, Is.EqualTo(new[] { "noisy" }));
-            Assert.That(capture.Errors.Count, Is.EqualTo(1));
-            Assert.That(capture.Errors[0].Message, Is.EqualTo("broken"));
-            Assert.That(capture.Errors[0].Exception, Is.Null);
+            Assert.That(capture.Entries.Select(entry => entry.Level),
+                Is.EqualTo(new[] { LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Debug }));
+            Assert.That(capture.Entries.Select(entry => entry.Message),
+                Is.EqualTo(new[] { "plain", "careful", "broken", "noisy" }));
+            Assert.That(capture.Entries.Select(entry => entry.Exception), Is.All.Null);
         }
 
         [Test]
@@ -48,7 +48,28 @@ namespace Top.Logging.Tests
 
             Log.Error("broken", failure);
 
-            Assert.That(capture.Errors[0].Exception, Is.SameAs(failure));
+            Assert.That(capture.Entries[0].Exception, Is.SameAs(failure));
+        }
+
+        [Test]
+        public void WarningsCarryTheirException()
+        {
+            var capture = new Capture();
+            Log.Writer = capture;
+            var failure = new InvalidOperationException("why");
+
+            Log.Warning("careful", failure);
+
+            Assert.That(capture.Entries[0].Level, Is.EqualTo(LogLevel.Warning));
+            Assert.That(capture.Entries[0].Exception, Is.SameAs(failure));
+        }
+
+        [Test]
+        public void SeverityOrdersFromDebugToError()
+        {
+            Assert.That(LogLevel.Debug, Is.LessThan(LogLevel.Info));
+            Assert.That(LogLevel.Info, Is.LessThan(LogLevel.Warning));
+            Assert.That(LogLevel.Warning, Is.LessThan(LogLevel.Error));
         }
 
         [Test]
@@ -61,8 +82,8 @@ namespace Top.Logging.Tests
 
             Log.Info("plain");
 
-            Assert.That(first.Messages, Is.Empty);
-            Assert.That(second.Messages, Is.EqualTo(new[] { "plain" }));
+            Assert.That(first.Entries, Is.Empty);
+            Assert.That(second.Entries.Select(entry => entry.Message), Is.EqualTo(new[] { "plain" }));
         }
 
         [Test]
@@ -73,7 +94,7 @@ namespace Top.Logging.Tests
             Assert.DoesNotThrow(() =>
             {
                 Log.Info("plain");
-                Log.Warning("careful");
+                Log.Warning("careful", new Exception());
                 Log.Error("broken", new Exception());
                 Log.Debug("noisy");
             });
@@ -81,32 +102,11 @@ namespace Top.Logging.Tests
 
         private class Capture : ILogWriter
         {
-            public List<string> Messages { get; } = [];
+            public List<(LogLevel Level, string Message, Exception Exception)> Entries { get; } = [];
 
-            public List<string> Warnings { get; } = [];
-
-            public List<(string Message, Exception Exception)> Errors { get; } = [];
-
-            public List<string> DebugMessages { get; } = [];
-
-            public void Write(string message)
+            public void Write(LogLevel level, string message, Exception exception)
             {
-                Messages.Add(message);
-            }
-
-            public void WriteWarning(string message)
-            {
-                Warnings.Add(message);
-            }
-
-            public void WriteError(string message, Exception exception)
-            {
-                Errors.Add((message, exception));
-            }
-
-            public void WriteDebug(string message)
-            {
-                DebugMessages.Add(message);
+                Entries.Add((level, message, exception));
             }
         }
     }
