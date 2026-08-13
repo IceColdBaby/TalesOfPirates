@@ -24,6 +24,7 @@
     <Project Path="src/Top.Contracts.Assets/Top.Contracts.Assets.csproj" />
     <Project Path="src/Top.Content.Packs/Top.Content.Packs.csproj" />
     <Project Path="src/Top.Conversion/Top.Conversion.csproj" />
+    <Project Path="src/Top.Conversion.Cli/Top.Conversion.Cli.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Top.Logging.Tests/Top.Logging.Tests.csproj" />
