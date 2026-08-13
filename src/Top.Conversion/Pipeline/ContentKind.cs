@@ -6,15 +6,10 @@ namespace Top.Conversion.Pipeline
     /// </summary>
     public static class ContentKind
     {
-        public const string Character = "Character";
+        public const string Character = "character";
 
-        public const string Item = "Item";
+        public const string Item = "item";
 
-        public const string Scene = "Scene";
-
-        public static string Of(string folder)
-        {
-            return char.ToUpperInvariant(folder[0]) + folder.Substring(1).ToLowerInvariant();
-        }
+        public const string Scene = "scene";
     }
 }

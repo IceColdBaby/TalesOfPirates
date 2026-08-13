@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using Top.Conversion.Pipeline;
 using Top.Conversion.Gltf;
@@ -36,11 +37,38 @@ namespace Top.Conversion.Tests.Pipeline
 
             var artifact = Converter().Convert(source);
 
-            Assert.That(artifact.Kind, Is.EqualTo("Scene"));
+            Assert.That(artifact.Kind, Is.EqualTo("scene"));
             Assert.That(artifact.Name, Is.EqualTo("stone01"));
             Assert.That(artifact.Outcome, Is.EqualTo(ConversionOutcome.Converted));
-            Assert.That(artifact.ModelPath, Is.EqualTo(_client.Converted("Scene", "stone01")));
+            Assert.That(artifact.ModelPath, Is.EqualTo(_client.Converted("scene", "stone01")));
             Assert.That(File.Exists(artifact.ModelPath));
+        }
+
+        [Test]
+        public void Models_of_a_kind_land_beside_each_other_as_single_files()
+        {
+            var converter = Converter();
+            converter.Convert(_client.AddModel("scene", "lgo/stone01.lgo"));
+            converter.Convert(_client.AddModel("scene", "lgo/dirk.lgo"));
+
+            var kindDir = Path.Combine(_client.OutputRoot, "models", "scene");
+
+            Assert.That(Directory.GetFiles(kindDir).Select(Path.GetFileName),
+                Is.EquivalentTo(new[] { "stone01.glb", "dirk.glb" }));
+            Assert.That(Directory.GetDirectories(kindDir), Is.Empty);
+        }
+
+        [Test]
+        public void A_mixed_case_original_lands_lowercase()
+        {
+            var source = _client.AddModel("scene", "lgo/stone01.lgo", "MY_BD001.lgo");
+
+            var artifact = Converter().Convert(source);
+
+            Assert.That(artifact.Name, Is.EqualTo("my_bd001"));
+            Assert.That(artifact.ModelPath, Is.EqualTo(_client.Converted("scene", "my_bd001")));
+            Assert.That(Directory.GetFiles(Path.Combine(_client.OutputRoot, "models", "scene"))
+                .Select(Path.GetFileName), Is.EqualTo(new[] { "my_bd001.glb" }));
         }
 
         [Test]
@@ -64,7 +92,7 @@ namespace Top.Conversion.Tests.Pipeline
             _client.AddTextures("scene", "dds");
 
             var artifact = Converter().Convert(source);
-            var png = Path.Combine(_client.OutputRoot, "Textures", "Scene", "010022.png");
+            var png = _client.ConvertedTexture("scene", "010022.png");
 
             Assert.That(File.Exists(png));
             Assert.That(artifact.TexturePaths, Has.Some.EqualTo(png));
@@ -72,7 +100,13 @@ namespace Top.Conversion.Tests.Pipeline
             using var stream = File.OpenRead(artifact.ModelPath);
             var document = GltfReader.Read(stream).Document;
 
-            Assert.That(document.Images[0].Uri, Does.StartWith("../../../Textures/Scene/"));
+            Assert.That(document.Images[0].Uri, Does.StartWith("../../textures/scene/"));
+
+            var modelDir = Path.GetDirectoryName(artifact.ModelPath);
+            var resolved = document.Images
+                .Select(image => Path.GetFullPath(Path.Combine(modelDir, image.Uri)));
+
+            Assert.That(resolved, Has.Some.EqualTo(Path.GetFullPath(png)));
         }
 
         [Test]
@@ -148,7 +182,7 @@ namespace Top.Conversion.Tests.Pipeline
             var artifact = Converter(overwrite: false).Convert(source);
 
             Assert.That(artifact.Outcome, Is.EqualTo(ConversionOutcome.Skipped));
-            Assert.That(artifact.ModelPath, Is.EqualTo(_client.Converted("Scene", "stone01")));
+            Assert.That(artifact.ModelPath, Is.EqualTo(_client.Converted("scene", "stone01")));
             Assert.That(artifact.TexturePaths, Is.Empty);
         }
 

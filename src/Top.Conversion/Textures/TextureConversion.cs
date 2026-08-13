@@ -14,6 +14,14 @@ namespace Top.Conversion.Textures
         private const int DilationPasses = 4;
 
         /// <summary>
+        /// What a legacy texture file is called once converted.
+        /// </summary>
+        public static string PngName(string fileName)
+        {
+            return Path.GetFileNameWithoutExtension(fileName).ToLowerInvariant() + ".png";
+        }
+
+        /// <summary>
         /// Throws <see cref="InvalidDataException"/> when the source is not a
         /// texture the readers recognize.
         /// </summary>

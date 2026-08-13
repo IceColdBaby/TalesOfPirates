@@ -39,8 +39,7 @@ namespace Top.Conversion.Pipeline
                 return already;
             }
 
-            var name = Path.GetFileNameWithoutExtension(labPath);
-            var rigDir = _settings.Output.RigDir(name);
+            var name = Path.GetFileNameWithoutExtension(labPath).ToLowerInvariant();
             var glbPath = _settings.Output.Rig(name);
 
             if (!_settings.Overwrite && File.Exists(glbPath))
@@ -73,7 +72,7 @@ namespace Top.Conversion.Pipeline
             }
 
             var file = GltfExport.Rig(name, skeleton, LoadActions(name));
-            var packaged = new ModelPackaging(rigDir).Write(file, name);
+            var packaged = new ModelPackaging(glbPath).Write(file);
 
             return _memo.Add(labPath, new ModelArtifact(name, ContentKind.Character, packaged.ModelPath,
                 packaged.TexturePaths, ConversionOutcome.Converted));

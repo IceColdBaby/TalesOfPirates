@@ -197,7 +197,6 @@ namespace Top.Conversion.Pipeline
                 return new CharacterResult(row.Id, name, ConversionOutcome.Skipped, null, already, NoParts);
             }
 
-            var modelDir = _settings.Output.ModelDir(ContentKind.Character, name);
             var glbPath = _settings.Output.Model(ContentKind.Character, name);
 
             if (!_settings.Overwrite && File.Exists(glbPath))
@@ -239,11 +238,11 @@ namespace Top.Conversion.Pipeline
                 return new CharacterResult(row.Id, name, ConversionOutcome.Failed, null, null, NoParts);
             }
 
-            var packaging = new ModelPackaging(modelDir, _settings.Output.TextureDir(ContentKind.Character));
+            var packaging = new ModelPackaging(glbPath, _settings.Output.TextureDir(ContentKind.Character));
             var file = GltfExport.Character(name, skeleton, parts.ToArray(),
                 _tables.ActionsFor(siblings, row.Model), packaging.TextureUriPrefix);
 
-            var packaged = packaging.Write(file, parts, name,
+            var packaged = packaging.Write(file, parts,
                 _settings.Source.TextureDir(ContentKind.Character));
 
             return Merged(row, labPath, new ModelArtifact(name, ContentKind.Character, packaged.ModelPath,

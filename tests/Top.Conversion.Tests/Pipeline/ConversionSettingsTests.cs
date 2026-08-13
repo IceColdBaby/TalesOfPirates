@@ -41,23 +41,37 @@ namespace Top.Conversion.Tests.Pipeline
         }
 
         [Test]
-        public void Output_paths_follow_the_output_root()
+        public void Converted_models_sit_under_their_kind_named_after_what_they_came_from()
         {
-            Assert.That(Slashed(Settings.Output.ModelDir("Scene", "stone01")),
-                Is.EqualTo("C:/project/Assets/Content/Scene/Models/stone01"));
-            Assert.That(Slashed(Settings.Output.RigDir("0001")),
-                Is.EqualTo("C:/project/Assets/Content/Character/Rigs/0001"));
-            Assert.That(Slashed(Settings.Output.TextureDir("Item")),
-                Is.EqualTo("C:/project/Assets/Content/Textures/Item"));
+            Assert.That(Slashed(Settings.Output.Model(ContentKind.Scene, "stone01")),
+                Is.EqualTo("C:/project/Assets/Content/models/scene/stone01.glb"));
+            Assert.That(Slashed(Settings.Output.Model(ContentKind.Item, "01010021")),
+                Is.EqualTo("C:/project/Assets/Content/models/item/01010021.glb"));
         }
 
         [Test]
-        public void Converted_models_are_named_after_what_they_came_from()
+        public void Rigs_sit_apart_from_the_models()
         {
-            Assert.That(Slashed(Settings.Output.Model("Scene", "stone01")),
-                Is.EqualTo("C:/project/Assets/Content/Scene/Models/stone01/stone01.glb"));
             Assert.That(Slashed(Settings.Output.Rig("0001")),
-                Is.EqualTo("C:/project/Assets/Content/Character/Rigs/0001/0001.glb"));
+                Is.EqualTo("C:/project/Assets/Content/rigs/0001.glb"));
+        }
+
+        [Test]
+        public void Textures_are_shared_by_every_model_of_a_kind()
+        {
+            Assert.That(Slashed(Settings.Output.TextureDir(ContentKind.Item)),
+                Is.EqualTo("C:/project/Assets/Content/textures/item"));
+        }
+
+        [Test]
+        public void Every_written_segment_is_lowercase()
+        {
+            Assert.That(Slashed(Settings.Output.Model("Scene", "MY_BD001")),
+                Is.EqualTo("C:/project/Assets/Content/models/scene/my_bd001.glb"));
+            Assert.That(Slashed(Settings.Output.Rig("Hero")),
+                Is.EqualTo("C:/project/Assets/Content/rigs/hero.glb"));
+            Assert.That(Slashed(Settings.Output.TextureDir("Scene")),
+                Is.EqualTo("C:/project/Assets/Content/textures/scene"));
         }
     }
 }

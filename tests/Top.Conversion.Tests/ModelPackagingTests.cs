@@ -46,7 +46,12 @@ namespace Top.Conversion.Tests
             }
         }
 
-        private string ModelDir => Path.Combine(_outputRoot, "models");
+        private string ModelPath(string name, GltfPackaging packaging = GltfPackaging.Glb)
+        {
+            var extension = packaging == GltfPackaging.Glb ? ".glb" : ".gltf";
+
+            return Path.Combine(_outputRoot, "models", name + extension);
+        }
 
         private string TextureDir => Path.Combine(_outputRoot, "textures");
 
@@ -59,19 +64,19 @@ namespace Top.Conversion.Tests
         private PackagedModel Write(SceneModel model, string name,
             string textureSearchDir, GltfPackaging packaging = GltfPackaging.Glb)
         {
-            var target = new ModelPackaging(ModelDir, TextureDir, packaging);
+            var target = new ModelPackaging(ModelPath(name, packaging), TextureDir, packaging);
             var file = GltfExport.Model(name, model, target.TextureUriPrefix);
 
-            return target.Write(file, model.GeometryObjects, name, textureSearchDir);
+            return target.Write(file, model.GeometryObjects, textureSearchDir);
         }
 
         private PackagedModel Write(GeometryObject obj, string name,
             string textureSearchDir, int? litSubset = null)
         {
-            var target = new ModelPackaging(ModelDir, TextureDir);
+            var target = new ModelPackaging(ModelPath(name), TextureDir);
             var file = GltfExport.Object(name, obj, target.TextureUriPrefix, litSubset);
 
-            return target.Write(file, [obj], name, textureSearchDir);
+            return target.Write(file, [obj], textureSearchDir);
         }
 
         [Test]
@@ -186,6 +191,36 @@ namespace Top.Conversion.Tests
             Assert.That(_log.Warnings, Is.Empty);
             Assert.That(result.TexturePaths, Has.Some.EndsWith("1.png"));
             Assert.That(File.Exists(Path.Combine(TextureDir, "1.png")));
+        }
+
+        [Test]
+        public void An_uppercase_original_becomes_a_lowercase_png_the_model_points_at()
+        {
+            var result = Write(MakeTexturedObject("BATMAN0023.bmp"), "loud-texture", Fixtures.Path("bmp"));
+
+            Assert.That(result.TexturePaths,
+                Has.Some.EqualTo(Path.Combine(TextureDir, "batman0023.png")));
+
+            using var fs = File.OpenRead(result.ModelPath);
+            var doc = GltfReader.Read(fs).Document;
+
+            Assert.That(doc.Images[0].Uri, Does.EndWith("/batman0023.png"));
+        }
+
+        [Test]
+        public void References_that_differ_only_in_case_share_one_png()
+        {
+            var obj = MakeTexturedObject("1.BMP");
+            obj.Materials =
+            [
+                obj.Materials[0],
+                new MaterialTexture { Stages = [new TextureStage { FileName = "1.bmp" }] },
+            ];
+
+            var result = Write(obj, "shared-texture", Fixtures.Path("bmp"));
+
+            Assert.That(result.TexturePaths, Is.EqualTo(new[] { Path.Combine(TextureDir, "1.png") }));
+            Assert.That(_log.Warnings, Is.Empty, "the second spelling is the same texture, not a miss");
         }
 
         [Test]

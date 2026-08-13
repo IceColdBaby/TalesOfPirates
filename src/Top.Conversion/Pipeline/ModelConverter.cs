@@ -43,8 +43,7 @@ namespace Top.Conversion.Pipeline
                 return null;
             }
 
-            var name = Path.GetFileNameWithoutExtension(modelPath);
-            var modelDir = _settings.Output.ModelDir(kind, name);
+            var name = Path.GetFileNameWithoutExtension(modelPath).ToLowerInvariant();
             var glbPath = _settings.Output.Model(kind, name);
 
             if (!_settings.Overwrite && File.Exists(glbPath))
@@ -87,14 +86,14 @@ namespace Top.Conversion.Pipeline
                 return null;
             }
 
-            var packaging = new ModelPackaging(modelDir, _settings.Output.TextureDir(kind));
+            var packaging = new ModelPackaging(glbPath, _settings.Output.TextureDir(kind));
             var uriPrefix = packaging.TextureUriPrefix;
             var objects = isObject ? new[] { obj } : model.GeometryObjects;
             var file = isObject
                 ? BuildObject(obj, name, kind, uriPrefix)
                 : GltfExport.Model(name, model, uriPrefix);
 
-            var packaged = packaging.Write(file, objects, name, _settings.Source.TextureDir(kind));
+            var packaged = packaging.Write(file, objects, _settings.Source.TextureDir(kind));
 
             return _memo.Add(modelPath, new ModelArtifact(name, kind, packaged.ModelPath,
                 packaged.TexturePaths, ConversionOutcome.Converted));
@@ -151,7 +150,7 @@ namespace Top.Conversion.Pipeline
                 if (!string.IsNullOrEmpty(parent) && string.Equals(Path.GetFileName(parent), "model",
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    return ContentKind.Of(Path.GetFileName(dir));
+                    return Path.GetFileName(dir).ToLowerInvariant();
                 }
             }
 

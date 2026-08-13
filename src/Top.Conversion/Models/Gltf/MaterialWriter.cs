@@ -1,10 +1,10 @@
 using System;
-using System.IO;
 using Newtonsoft.Json.Linq;
 using Top.Contracts.Assets.Models;
 using Top.Contracts.Assets.Models.Extras;
 using Top.Contracts.Assets.Models.Materials;
 using Top.Conversion.Models.Materials;
+using Top.Conversion.Textures;
 using Top.Conversion.Gltf;
 using Top.Logging;
 using Top.Legacy.MindPower.Geometry;
@@ -85,7 +85,7 @@ namespace Top.Conversion.Models.Gltf
 
         public GltfTextureRef AddTexture(string fileName)
         {
-            return _gltf.AddTexture($"{_textureUriPrefix}/{Path.GetFileNameWithoutExtension(fileName)}.png");
+            return _gltf.AddTexture($"{_textureUriPrefix}/{TextureConversion.PngName(fileName)}");
         }
 
         private static RenderStateExtras MapRenderState(RenderState state)

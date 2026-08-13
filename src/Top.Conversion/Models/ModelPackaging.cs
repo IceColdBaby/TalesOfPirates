@@ -34,11 +34,12 @@ namespace Top.Conversion.Models
     /// </summary>
     public class ModelPackaging
     {
+        private readonly string _modelPath;
         private readonly string _modelOutputDir;
         private readonly string _textureOutputDir;
         private readonly GltfPackaging _packaging;
 
-        public ModelPackaging(string modelOutputDir, string textureOutputDir = null,
+        public ModelPackaging(string modelPath, string textureOutputDir = null,
             GltfPackaging packaging = GltfPackaging.Glb)
         {
             if (!Enum.IsDefined(typeof(GltfPackaging), packaging))
@@ -46,7 +47,8 @@ namespace Top.Conversion.Models
                 throw new ArgumentOutOfRangeException(nameof(packaging), packaging, null);
             }
 
-            _modelOutputDir = modelOutputDir;
+            _modelPath = modelPath;
+            _modelOutputDir = Path.GetDirectoryName(modelPath);
             _textureOutputDir = textureOutputDir;
             _packaging = packaging;
         }
@@ -55,26 +57,22 @@ namespace Top.Conversion.Models
             .GetRelativePath(_modelOutputDir, _textureOutputDir)
             .Replace('\\', '/');
 
-        public PackagedModel Write(GltfFile file, string name)
+        public PackagedModel Write(GltfFile file)
         {
             Directory.CreateDirectory(_modelOutputDir);
 
-            var modelPath = WriteModel(file, name, out var binPath);
+            var modelPath = WriteModel(file, out var binPath);
 
             return new PackagedModel(modelPath, binPath, Array.Empty<string>());
         }
 
-        /// <summary>
-        /// Writes a model together with the PNGs its source objects name,
-        /// converting from the original client texture formats on the way.
-        /// </summary>
-        public PackagedModel Write(GltfFile file, IReadOnlyList<GeometryObject> objects, string name,
+        public PackagedModel Write(GltfFile file, IReadOnlyList<GeometryObject> objects,
             string textureSearchDir)
         {
             Directory.CreateDirectory(_modelOutputDir);
             Directory.CreateDirectory(_textureOutputDir);
 
-            var modelPath = WriteModel(file, name, out var binPath);
+            var modelPath = WriteModel(file, out var binPath);
             var texturePaths = WriteTextures(objects, textureSearchDir);
 
             return new PackagedModel(modelPath, binPath, texturePaths);
@@ -82,7 +80,7 @@ namespace Top.Conversion.Models
 
         private static IEnumerable<TextureStage> CollectTextureStages(IReadOnlyList<GeometryObject> objects)
         {
-            var seen = new Dictionary<string, TextureStage>();
+            var seen = new HashSet<string>();
 
             foreach (var obj in objects)
             {
@@ -108,7 +106,7 @@ namespace Top.Conversion.Models
                             continue;
                         }
 
-                        if (seen.TryAdd(stage.FileName, stage))
+                        if (seen.Add(TextureConversion.PngName(stage.FileName)))
                         {
                             yield return stage;
                         }
@@ -146,7 +144,7 @@ namespace Top.Conversion.Models
                                 continue;
                             }
 
-                            if (seen.TryAdd(frame.FileName, frame))
+                            if (seen.Add(TextureConversion.PngName(frame.FileName)))
                             {
                                 yield return frame;
                             }
@@ -168,7 +166,7 @@ namespace Top.Conversion.Models
                 .FirstOrDefault(File.Exists);
         }
 
-        private string WriteModel(GltfFile file, string name, out string binPath)
+        private string WriteModel(GltfFile file, out string binPath)
         {
             binPath = null;
 
@@ -176,34 +174,30 @@ namespace Top.Conversion.Models
             {
                 case GltfPackaging.GltfEmbedded:
                     {
-                        var modelPath = Path.Combine(_modelOutputDir, name + ".gltf");
-
-                        using var fs = File.Create(modelPath);
+                        using var fs = File.Create(_modelPath);
                         GltfWriter.WriteGltfEmbedded(file.Document, file.BinChunk, fs);
 
-                        return modelPath;
+                        return _modelPath;
                     }
 
                 case GltfPackaging.GltfWithBin:
                     {
-                        var modelPath = Path.Combine(_modelOutputDir, name + ".gltf");
-                        binPath = Path.Combine(_modelOutputDir, name + ".bin");
+                        binPath = Path.ChangeExtension(_modelPath, ".bin");
 
-                        using var json = File.Create(modelPath);
+                        using var json = File.Create(_modelPath);
                         using var bin = File.Create(binPath);
-                        GltfWriter.WriteGltfWithBin(file.Document, file.BinChunk, name + ".bin", json, bin);
+                        GltfWriter.WriteGltfWithBin(file.Document, file.BinChunk,
+                            Path.GetFileName(binPath), json, bin);
 
-                        return modelPath;
+                        return _modelPath;
                     }
 
                 case GltfPackaging.Glb:
                     {
-                        var modelPath = Path.Combine(_modelOutputDir, name + ".glb");
-
-                        using var fs = File.Create(modelPath);
+                        using var fs = File.Create(_modelPath);
                         GltfWriter.WriteGlb(file.Document, file.BinChunk, fs);
 
-                        return modelPath;
+                        return _modelPath;
                     }
 
                 default:
@@ -218,7 +212,7 @@ namespace Top.Conversion.Models
             foreach (var stage in CollectTextureStages(objects))
             {
                 var fileName = stage.FileName;
-                var pngPath = Path.Combine(_textureOutputDir, Path.GetFileNameWithoutExtension(fileName) + ".png");
+                var pngPath = Path.Combine(_textureOutputDir, TextureConversion.PngName(fileName));
 
                 if (File.Exists(pngPath))
                 {

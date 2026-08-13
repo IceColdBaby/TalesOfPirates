@@ -59,7 +59,8 @@ namespace Top.Conversion.Tests.Pipeline
             Assert.That(result.Outcome, Is.EqualTo(ConversionOutcome.Converted));
             Assert.That(result.Wearable, Is.False);
             Assert.That(result.Modules, Is.EqualTo(new[] { "held0", "held1", null, null }));
-            Assert.That(result.ModuleArtifacts[0].Kind, Is.EqualTo("Item"));
+            Assert.That(result.ModuleArtifacts[0].Kind, Is.EqualTo("item"));
+            Assert.That(result.ModuleArtifacts[0].ModelPath, Is.EqualTo(_client.Converted("item", "held0")));
             Assert.That(result.ModuleArtifacts[1].Name, Is.EqualTo("held1"));
             Assert.That(result.ModuleArtifacts[2], Is.Null);
             Assert.That(result.Artifacts.Count(), Is.EqualTo(2));
@@ -73,7 +74,7 @@ namespace Top.Conversion.Tests.Pipeline
             var result = Converter(Item(5, ItemType.Clothing, "worn0")).Convert(5);
 
             Assert.That(result.Wearable, Is.True);
-            Assert.That(result.ModuleArtifacts[0].Kind, Is.EqualTo("Character"));
+            Assert.That(result.ModuleArtifacts[0].Kind, Is.EqualTo("character"));
         }
 
         [Test]
@@ -83,7 +84,7 @@ namespace Top.Conversion.Tests.Pipeline
 
             var result = Converter(Item(5, ItemType.Sword, "held0")).Convert(5);
 
-            Assert.That(result.ModuleArtifacts[0].Kind, Is.EqualTo("Character"));
+            Assert.That(result.ModuleArtifacts[0].Kind, Is.EqualTo("character"));
             Assert.That(_log.Warnings,
                 Has.Some.Contains("found under model/character instead of model/item"));
         }

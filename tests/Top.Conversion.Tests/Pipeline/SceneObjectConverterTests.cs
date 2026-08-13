@@ -50,8 +50,8 @@ namespace Top.Conversion.Tests.Pipeline
 
             Assert.That(result.Outcome, Is.EqualTo(ConversionOutcome.Converted));
             Assert.That(result.Id, Is.EqualTo(42), "what a placement in a map refers to");
-            Assert.That(result.Model.Kind, Is.EqualTo("Scene"));
-            Assert.That(result.Model.ModelPath, Is.EqualTo(_client.Converted("Scene", "stone01")));
+            Assert.That(result.Model.Kind, Is.EqualTo("scene"));
+            Assert.That(result.Model.ModelPath, Is.EqualTo(_client.Converted("scene", "stone01")));
         }
 
         [Test]

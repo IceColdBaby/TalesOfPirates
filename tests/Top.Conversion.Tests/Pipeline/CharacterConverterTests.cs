@@ -96,7 +96,7 @@ namespace Top.Conversion.Tests.Pipeline
             Assert.That(result.Rig.ModelPath, Is.EqualTo(_client.ConvertedRig("0001")));
             Assert.That(result.Parts, Has.Count.EqualTo(1));
             Assert.That(result.Parts[0].ModuleArtifacts[PlayerModel].ModelPath,
-                Is.EqualTo(_client.Converted("Character", "0001000000")));
+                Is.EqualTo(_client.Converted("character", "0001000000")));
         }
 
         [Test]
@@ -158,7 +158,7 @@ namespace Top.Conversion.Tests.Pipeline
             Assert.That(result.Outcome, Is.EqualTo(ConversionOutcome.Converted));
             Assert.That(result.Name, Is.EqualTo("0724"));
             Assert.That(result.Rig, Is.Null, "the skeleton rides inside the merged model");
-            Assert.That(result.Model.ModelPath, Is.EqualTo(_client.Converted("Character", "0724")));
+            Assert.That(result.Model.ModelPath, Is.EqualTo(_client.Converted("character", "0724")));
         }
 
         [Test]

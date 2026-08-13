@@ -180,11 +180,11 @@ namespace Top.Conversion.Tests
             try
             {
                 var packaging = new ModelPackaging(
-                    Path.Combine(dir, "model"), Path.Combine(dir, "textures"));
+                    Path.Combine(dir, "model", "0055.glb"), Path.Combine(dir, "textures"));
 
                 var file = GltfExport.Character("0055", MakeSkeleton(), parts, MakeActions(), packaging.TextureUriPrefix);
 
-                var result = packaging.Write(file, parts, "0055", Path.Combine(dir, "textures-src"));
+                var result = packaging.Write(file, parts, Path.Combine(dir, "textures-src"));
 
                 Assert.That(File.Exists(Path.Combine(dir, "model", "0055.glb")), Is.True);
                 Assert.That(result.ModelPath, Is.EqualTo(Path.Combine(dir, "model", "0055.glb")));

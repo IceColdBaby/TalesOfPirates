@@ -58,7 +58,7 @@ namespace Top.Conversion.Tests.Pipeline
             var artifact = Converter(true, Character(10, actionId: 7)).Convert(1);
 
             Assert.That(artifact.Outcome, Is.EqualTo(ConversionOutcome.Converted));
-            Assert.That(artifact.Kind, Is.EqualTo("Character"));
+            Assert.That(artifact.Kind, Is.EqualTo("character"));
             Assert.That(artifact.ModelPath, Is.EqualTo(_client.ConvertedRig("0001")));
 
             using var stream = File.OpenRead(artifact.ModelPath);

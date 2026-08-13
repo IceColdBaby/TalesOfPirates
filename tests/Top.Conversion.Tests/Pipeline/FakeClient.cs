@@ -80,12 +80,17 @@ namespace Top.Conversion.Tests.Pipeline
 
         internal string Converted(string kind, string name)
         {
-            return Path.Combine(OutputRoot, kind, "Models", name, name + ".glb");
+            return Path.Combine(OutputRoot, "models", kind, name + ".glb");
         }
 
         internal string ConvertedRig(string name)
         {
-            return Path.Combine(OutputRoot, "Character", "Rigs", name, name + ".glb");
+            return Path.Combine(OutputRoot, "rigs", name + ".glb");
+        }
+
+        internal string ConvertedTexture(string kind, string name)
+        {
+            return Path.Combine(OutputRoot, "textures", kind, name);
         }
 
         /// <summary>

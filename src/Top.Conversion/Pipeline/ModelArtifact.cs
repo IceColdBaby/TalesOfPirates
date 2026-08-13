@@ -11,7 +11,8 @@ namespace Top.Conversion.Pipeline
     }
 
     /// <summary>
-    /// One glTF the pipeline produced and the PNGs written beside it.
+    /// One glTF the pipeline produced and the PNGs it points at in the
+    /// texture folder its kind shares.
     /// </summary>
     public class ModelArtifact
     {

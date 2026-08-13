@@ -338,7 +338,7 @@ namespace Top.Conversion.Tests
             try
             {
                 var file = GltfExport.Rig("rig", MakeSkeleton(), [Action(1, 0, 1)]);
-                var result = new ModelPackaging(outputDir).Write(file, "rig");
+                var result = new ModelPackaging(Path.Combine(outputDir, "rig.glb")).Write(file);
 
                 Assert.That(result.ModelPath, Does.EndWith("rig.glb"));
                 Assert.That(File.Exists(result.ModelPath), Is.True);
