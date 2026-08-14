@@ -1,0 +1,221 @@
+using System.IO;
+using System.Text;
+
+namespace Top.Contracts.Assets.Maps
+{
+    /// <summary>
+    /// Represents a map file that contains information about the structure and content of a game map.
+    /// </summary>
+    public class MapFile
+    {
+        public const int Version = 1;
+
+        public readonly int Width;
+        public readonly int Height;
+        public readonly int ChunkSize;
+        public readonly string[] TexturePalette;
+        public readonly MapChunk[,] Chunks;
+
+        public MapFile(int width, int height, int chunkSize, string[] texturePalette)
+        {
+            Width = width;
+            Height = height;
+            ChunkSize = chunkSize;
+            TexturePalette = texturePalette;
+            Chunks = new MapChunk[ChunkCountX, ChunkCountY];
+        }
+
+        public int ChunkCountX => (Width + ChunkSize - 1) / ChunkSize;
+        public int ChunkCountY => (Height + ChunkSize - 1) / ChunkSize;
+
+        public void Write(Stream stream)
+        {
+            using var writer = new BinaryWriter(stream, Encoding.UTF8, leaveOpen: true);
+
+            writer.Write(Version);
+            writer.Write(Width);
+            writer.Write(Height);
+            writer.Write(ChunkSize);
+            writer.Write(TexturePalette.Length);
+
+            foreach (var path in TexturePalette)
+            {
+                writer.Write(path);
+            }
+
+            var tablePosition = stream.Position;
+
+            for (var i = 0; i < ChunkCountX * ChunkCountY; i++)
+            {
+                writer.Write(0L);
+            }
+
+            var offsets = new long[ChunkCountX * ChunkCountY];
+
+            for (var chunkY = 0; chunkY < ChunkCountY; chunkY++)
+            {
+                for (var chunkX = 0; chunkX < ChunkCountX; chunkX++)
+                {
+                    var chunk = Chunks[chunkX, chunkY];
+
+                    if (chunk == null)
+                    {
+                        continue;
+                    }
+
+                    offsets[chunkY * ChunkCountX + chunkX] = stream.Position;
+                    WriteChunk(writer, chunk);
+                }
+            }
+
+            var end = stream.Position;
+            stream.Position = tablePosition;
+
+            foreach (var offset in offsets)
+            {
+                writer.Write(offset);
+            }
+
+            stream.Position = end;
+        }
+
+        private static void WriteChunk(BinaryWriter writer, MapChunk chunk)
+        {
+            foreach (var tile in chunk.Tiles)
+            {
+                writer.Write(tile.Height);
+                writer.Write(tile.ColorR);
+                writer.Write(tile.ColorG);
+                writer.Write(tile.ColorB);
+                WriteLayer(writer, tile.Layer0);
+                WriteLayer(writer, tile.Layer1);
+                WriteLayer(writer, tile.Layer2);
+                WriteLayer(writer, tile.Layer3);
+                writer.Write(tile.Region);
+                writer.Write(tile.Island);
+                writer.Write(tile.Corner00);
+                writer.Write(tile.Corner10);
+                writer.Write(tile.Corner01);
+                writer.Write(tile.Corner11);
+            }
+
+            writer.Write(chunk.Placements.Count);
+
+            foreach (var placement in chunk.Placements)
+            {
+                writer.Write((byte)placement.Kind);
+                writer.Write(placement.CatalogId);
+                writer.Write(placement.X);
+                writer.Write(placement.Y);
+                writer.Write(placement.HeightOffset);
+                writer.Write(placement.Yaw);
+            }
+        }
+
+        private static void WriteLayer(BinaryWriter writer, MapTileLayer layer)
+        {
+            writer.Write(layer.PaletteIndex);
+            writer.Write(layer.MaskIndex);
+        }
+
+        public static MapFile Read(Stream stream)
+        {
+            using var reader = new BinaryReader(stream, Encoding.UTF8, leaveOpen: true);
+
+            var version = reader.ReadInt32();
+
+            if (version != Version)
+            {
+                throw new InvalidDataException($"Unknown map format version {version}, expected {Version}.");
+            }
+
+            var width = reader.ReadInt32();
+            var height = reader.ReadInt32();
+            var chunkSize = reader.ReadInt32();
+            var palette = new string[reader.ReadInt32()];
+
+            for (var i = 0; i < palette.Length; i++)
+            {
+                palette[i] = reader.ReadString();
+            }
+
+            var map = new MapFile(width, height, chunkSize, palette);
+
+            var offsets = new long[map.ChunkCountX * map.ChunkCountY];
+
+            for (var i = 0; i < offsets.Length; i++)
+            {
+                offsets[i] = reader.ReadInt64();
+            }
+
+            for (var chunkY = 0; chunkY < map.ChunkCountY; chunkY++)
+            {
+                for (var chunkX = 0; chunkX < map.ChunkCountX; chunkX++)
+                {
+                    var offset = offsets[chunkY * map.ChunkCountX + chunkX];
+                    if (offset == 0)
+                    {
+                        continue;
+                    }
+
+                    stream.Position = offset;
+                    map.Chunks[chunkX, chunkY] = ReadChunk(reader, chunkSize);
+                }
+            }
+
+            return map;
+        }
+
+        private static MapChunk ReadChunk(BinaryReader reader, int chunkSize)
+        {
+            var chunk = new MapChunk(chunkSize);
+
+            for (var i = 0; i < chunk.Tiles.Length; i++)
+            {
+                chunk.Tiles[i] = new MapTile
+                {
+                    Height = reader.ReadSingle(),
+                    ColorR = reader.ReadByte(),
+                    ColorG = reader.ReadByte(),
+                    ColorB = reader.ReadByte(),
+                    Layer0 = ReadLayer(reader),
+                    Layer1 = ReadLayer(reader),
+                    Layer2 = ReadLayer(reader),
+                    Layer3 = ReadLayer(reader),
+                    Region = reader.ReadUInt16(),
+                    Island = reader.ReadByte(),
+                    Corner00 = reader.ReadByte(),
+                    Corner10 = reader.ReadByte(),
+                    Corner01 = reader.ReadByte(),
+                    Corner11 = reader.ReadByte(),
+                };
+            }
+
+            var placementCount = reader.ReadInt32();
+
+            for (var i = 0; i < placementCount; i++)
+            {
+                chunk.Placements.Add(new MapPlacement
+                {
+                    Kind = (PlacementKind)reader.ReadByte(),
+                    CatalogId = reader.ReadInt32(),
+                    X = reader.ReadSingle(),
+                    Y = reader.ReadSingle(),
+                    HeightOffset = reader.ReadSingle(),
+                    Yaw = reader.ReadSingle(),
+                });
+            }
+
+            return chunk;
+        }
+
+        private static MapTileLayer ReadLayer(BinaryReader reader)
+        {
+            return new MapTileLayer
+            {
+                PaletteIndex = reader.ReadByte(),
+                MaskIndex = reader.ReadByte(),
+            };
+        }
+    }
+}
