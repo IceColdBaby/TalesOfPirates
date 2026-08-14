@@ -8,7 +8,7 @@ using Top.Logging;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Gltf
 {
     /// <summary>
     /// Replaces glTFast's stock clip creation with legacy clips whose curve

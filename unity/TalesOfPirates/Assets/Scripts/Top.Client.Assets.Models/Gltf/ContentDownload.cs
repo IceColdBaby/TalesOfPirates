@@ -3,7 +3,7 @@ using GLTFast;
 using GLTFast.Loading;
 using UnityEngine;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Gltf
 {
     /// <summary>
     /// Downloadable content object that encapsulates data, errors, and other relevant information

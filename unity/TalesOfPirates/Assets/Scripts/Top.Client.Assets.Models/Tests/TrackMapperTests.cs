@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Top.Client.Assets.Models.Animations;
 using Top.Contracts.Assets.Models;
 using Top.Contracts.Assets.Models.Extras;
 using UnityEngine;

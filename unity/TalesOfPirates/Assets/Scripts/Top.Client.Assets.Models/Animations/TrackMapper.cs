@@ -2,7 +2,7 @@ using System;
 using Top.Contracts.Assets.Models.Extras;
 using UnityEngine;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Animations
 {
     /// <summary>
     /// Turns the animation sections a material carries into the tracks the

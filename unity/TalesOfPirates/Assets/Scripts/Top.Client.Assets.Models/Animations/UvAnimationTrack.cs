@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Animations
 {
     /// <summary>
     /// A per-frame texture-transform track.

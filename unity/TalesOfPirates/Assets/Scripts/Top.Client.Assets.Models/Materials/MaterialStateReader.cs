@@ -5,7 +5,7 @@ using Top.Contracts.Assets.Models.Materials;
 using Top.Logging;
 using Material = GLTFast.Newtonsoft.Schema.Material;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Materials
 {
     /// <summary>
     /// Resolves what a glTF material asks for, reading the standard fields
@@ -67,7 +67,7 @@ namespace Top.Client.Assets.Models
             return state;
         }
 
-        private static bool TryReadExtras(MaterialBase material, out MaterialExtras extras)
+        public static bool TryReadExtras(MaterialBase material, out MaterialExtras extras)
         {
             extras = null;
 

@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Top.Client.Assets.Models.Materials;
 using Top.Contracts.Assets.Models.Materials;
 using UnityEngine;
 using UnityEngine.Rendering;

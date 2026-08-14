@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Top.Client.Assets.Models.Animations;
 using UnityEngine;
 
 namespace Top.Client.Assets.Models.Tests

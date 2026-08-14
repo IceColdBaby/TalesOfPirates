@@ -2,11 +2,12 @@ using GLTFast;
 using GLTFast.Logging;
 using GLTFast.Materials;
 using GLTFast.Schema;
+using Top.Client.Assets.Models.Materials;
 using Top.Contracts.Assets.Models.Materials;
 using UnityEngine;
 using Material = UnityEngine.Material;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Gltf
 {
     /// <summary>
     /// Builds a Top/Legacy palette material for every glTF material glTFast

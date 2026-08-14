@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Animations
 {
     /// <summary>
     /// Plays a TextureImageTrack on one material slot.

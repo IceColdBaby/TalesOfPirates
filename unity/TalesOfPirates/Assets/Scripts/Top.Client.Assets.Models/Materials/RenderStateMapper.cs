@@ -2,7 +2,7 @@ using Top.Contracts.Assets.Models.Materials;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Materials
 {
     /// <summary>
     /// Projects a resolved render state onto a Top/Legacy material.

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using GLTFast.Loading;
 using Top.Content.Packs;
 
-namespace Top.Client.Assets.Models
+namespace Top.Client.Assets.Models.Gltf
 {
     /// <summary>
     /// Downloads model and texture data from a composed content source.

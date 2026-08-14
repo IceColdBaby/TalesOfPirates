@@ -1,6 +1,7 @@
 using GLTFast.Schema;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using Top.Client.Assets.Models.Materials;
 using Top.Contracts.Assets.Models.Materials;
 using Material = GLTFast.Newtonsoft.Schema.Material;
 using PbrMetallicRoughness = GLTFast.Newtonsoft.Schema.PbrMetallicRoughness;

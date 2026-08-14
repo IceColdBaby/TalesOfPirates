@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Top.Client.Assets.Models.Gltf;
 using Top.Content.Packs;
 using UnityEngine;
 
