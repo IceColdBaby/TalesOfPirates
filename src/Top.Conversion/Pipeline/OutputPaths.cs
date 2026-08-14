@@ -7,21 +7,17 @@ namespace Top.Conversion.Pipeline
     /// their own, textures shared by every model of a kind. Every segment
     /// below the root is written lowercase.
     /// </summary>
-    public class OutputPaths
+    public class OutputPaths(string root)
     {
-        private readonly string _root;
+        public string At(string treePath) => Path.Combine(root, treePath.Replace('/', Path.DirectorySeparatorChar));
 
-        public OutputPaths(string root)
-        {
-            _root = root;
-        }
+        public string Model(string kind, string name) => At(ModelTreePath(kind, name));
 
-        public string Model(string kind, string name) =>
-            Path.Combine(_root, "models", Lower(kind), Lower(name) + ".glb");
+        public static string ModelTreePath(string kind, string name) => $"models/{Lower(kind)}/{Lower(name)}.glb";
 
-        public string Rig(string name) => Path.Combine(_root, "rigs", Lower(name) + ".glb");
+        public string Rig(string name) => Path.Combine(root, "rigs", Lower(name) + ".glb");
 
-        public string TextureDir(string kind) => Path.Combine(_root, "textures", Lower(kind));
+        public string TextureDir(string kind) => Path.Combine(root, "textures", Lower(kind));
 
         private static string Lower(string segment) => segment.ToLowerInvariant();
     }

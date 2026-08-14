@@ -15,17 +15,18 @@ namespace Top.Conversion.Pipeline
         public ConversionPipeline(ConversionSettings settings, ClientTables tables)
         {
             Settings = settings;
-            Tables = tables;
+            ClientTables = tables;
             Models = new ModelConverter(settings);
             Rigs = new RigConverter(settings, tables);
             Items = new ItemConverter(settings, tables, Models);
             SceneObjects = new SceneObjectConverter(settings, tables, Models);
             Characters = new CharacterConverter(settings, tables, Rigs, Items);
+            Tables = new TableConverter(settings, tables);
         }
 
         public ConversionSettings Settings { get; }
 
-        public ClientTables Tables { get; }
+        public ClientTables ClientTables { get; }
 
         public ModelConverter Models { get; }
 
@@ -36,5 +37,7 @@ namespace Top.Conversion.Pipeline
         public SceneObjectConverter SceneObjects { get; }
 
         public CharacterConverter Characters { get; }
+
+        public TableConverter Tables { get; }
     }
 }

@@ -11,5 +11,7 @@ namespace Top.Conversion.Pipeline
         public const string Item = "item";
 
         public const string Scene = "scene";
+
+        public const string Table = "table";
     }
 }

@@ -15,9 +15,9 @@ namespace Top.Conversion.Cli
         public const string DefaultOutput = "artifacts/content";
 
         private static readonly string[] EveryKind =
-        {
-            ContentKind.Character, ContentKind.Item, ContentKind.Scene
-        };
+        [
+            ContentKind.Character, ContentKind.Item, ContentKind.Scene, ContentKind.Table
+        ];
 
         public static readonly string Usage = $"""
             usage: Top.Conversion.Cli [--source <dir>] [--out <dir>] [--kinds <list>]
