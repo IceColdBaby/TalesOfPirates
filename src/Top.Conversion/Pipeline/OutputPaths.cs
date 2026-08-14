@@ -1,9 +1,10 @@
 using System.IO;
+using Top.Conversion.Textures;
 
 namespace Top.Conversion.Pipeline
 {
     /// <summary>
-    /// The converted tree: one glTF file per model under its kind, rigs of
+    /// The converted tree. One glTF file per model under its kind, rigs of
     /// their own, textures shared by every model of a kind. Every segment
     /// below the root is written lowercase.
     /// </summary>
@@ -17,7 +18,12 @@ namespace Top.Conversion.Pipeline
 
         public string Rig(string name) => Path.Combine(root, "rigs", Lower(name) + ".glb");
 
+        public string Map(string name) => At($"maps/{Lower(name)}.map");
+
         public string TextureDir(string kind) => Path.Combine(root, "textures", Lower(kind));
+
+        public static string TextureTreePath(string kind, string fileName) =>
+            $"textures/{Lower(kind)}/{TextureConversion.PngName(fileName)}";
 
         private static string Lower(string segment) => segment.ToLowerInvariant();
     }

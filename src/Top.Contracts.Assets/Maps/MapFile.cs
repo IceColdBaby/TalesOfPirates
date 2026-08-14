@@ -1,4 +1,5 @@
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 
 namespace Top.Contracts.Assets.Maps
@@ -30,9 +31,26 @@ namespace Top.Contracts.Assets.Maps
 
         public void Write(Stream stream)
         {
+            using (var writer = new BinaryWriter(stream, Encoding.UTF8, leaveOpen: true))
+            {
+                writer.Write(Version);
+            }
+
+            using var body = new MemoryStream();
+
+            WriteBody(body);
+
+            body.Position = 0;
+
+            using var deflated = new GZipStream(stream, CompressionLevel.Optimal, leaveOpen: true);
+
+            body.CopyTo(deflated);
+        }
+
+        private void WriteBody(Stream stream)
+        {
             using var writer = new BinaryWriter(stream, Encoding.UTF8, leaveOpen: true);
 
-            writer.Write(Version);
             writer.Write(Width);
             writer.Write(Height);
             writer.Write(ChunkSize);
@@ -120,14 +138,33 @@ namespace Top.Contracts.Assets.Maps
 
         public static MapFile Read(Stream stream)
         {
-            using var reader = new BinaryReader(stream, Encoding.UTF8, leaveOpen: true);
+            int version;
 
-            var version = reader.ReadInt32();
+            using (var header = new BinaryReader(stream, Encoding.UTF8, leaveOpen: true))
+            {
+                version = header.ReadInt32();
+            }
 
             if (version != Version)
             {
                 throw new InvalidDataException($"Unknown map format version {version}, expected {Version}.");
             }
+
+            using var body = new MemoryStream();
+
+            using (var deflated = new GZipStream(stream, CompressionMode.Decompress, leaveOpen: true))
+            {
+                deflated.CopyTo(body);
+            }
+
+            body.Position = 0;
+
+            return ReadBody(body);
+        }
+
+        private static MapFile ReadBody(Stream stream)
+        {
+            using var reader = new BinaryReader(stream, Encoding.UTF8, leaveOpen: true);
 
             var width = reader.ReadInt32();
             var height = reader.ReadInt32();

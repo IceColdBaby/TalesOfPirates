@@ -4,11 +4,12 @@ using System.Text;
 using NUnit.Framework;
 using Top.Conversion.Pipeline;
 using Top.Legacy.Tables.Custom;
+using Original = Top.Legacy.MindPower.World;
 
 namespace Top.Conversion.Tests.Pipeline
 {
     /// <summary>
-    /// A throwaway client tree beside a throwaway output root: original files
+    /// A throwaway client tree beside a throwaway output root. Original files
     /// go in by copying fixtures, converted ones come out where the settings
     /// say. Both are gone when the test ends.
     /// </summary>
@@ -78,9 +79,36 @@ namespace Top.Conversion.Tests.Pipeline
             }
         }
 
+        internal void AddMap(string name, Original.MapFile terrain, Original.ObjFile objects = null)
+        {
+            using (var stream = File.Create(MapPath(name, ".map")))
+            {
+                terrain.Write(stream);
+            }
+
+            if (objects == null)
+            {
+                return;
+            }
+
+            using var objectStream = File.Create(MapPath(name, ".obj"));
+
+            objects.Write(objectStream);
+        }
+
+        internal void AddUnreadableMap(string name)
+        {
+            File.WriteAllBytes(MapPath(name, ".map"), new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+        }
+
         internal string Converted(string kind, string name)
         {
             return Path.Combine(OutputRoot, "models", kind, name + ".glb");
+        }
+
+        internal string ConvertedMap(string name)
+        {
+            return Path.Combine(OutputRoot, "maps", name + ".map");
         }
 
         internal string ConvertedRig(string name)
@@ -106,6 +134,15 @@ namespace Top.Conversion.Tests.Pipeline
         public void Dispose()
         {
             Delete();
+        }
+
+        private string MapPath(string name, string extension)
+        {
+            var directory = Path.Combine(ClientRoot, "map");
+
+            Directory.CreateDirectory(directory);
+
+            return Path.Combine(directory, name + extension);
         }
 
         private void Delete()

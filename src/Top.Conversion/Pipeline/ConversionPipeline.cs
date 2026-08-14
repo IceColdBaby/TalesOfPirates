@@ -22,6 +22,7 @@ namespace Top.Conversion.Pipeline
             SceneObjects = new SceneObjectConverter(settings, tables, Models);
             Characters = new CharacterConverter(settings, tables, Rigs, Items);
             Tables = new TableConverter(settings, tables);
+            Maps = new MapConverter(settings, tables);
         }
 
         public ConversionSettings Settings { get; }
@@ -39,5 +40,7 @@ namespace Top.Conversion.Pipeline
         public CharacterConverter Characters { get; }
 
         public TableConverter Tables { get; }
+
+        public MapConverter Maps { get; }
     }
 }

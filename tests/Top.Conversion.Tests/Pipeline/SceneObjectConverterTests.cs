@@ -97,16 +97,16 @@ namespace Top.Conversion.Tests.Pipeline
         public void A_batch_reports_the_unit_it_is_about_to_convert()
         {
             _client.AddModel("scene", "lgo/stone01.lgo");
-            var seen = new List<ConversionProgress>();
+            var progress = new RecordedProgress();
 
             Converter(Row(42, "stone01.lgo"), Row(43, "stone01.lgo"))
-                .ConvertAll(new Progress(seen))
+                .ConvertAll(progress)
                 .ToList();
 
-            Assert.That(seen.Select(step => step.Unit),
+            Assert.That(progress.Steps.Select(step => step.Unit),
                 Is.EqualTo(new[] { "scene object 42", "scene object 43" }));
-            Assert.That(seen[0].Count, Is.EqualTo(2));
-            Assert.That(seen[1].Fraction, Is.EqualTo(0.5f));
+            Assert.That(progress.Steps[0].Count, Is.EqualTo(2));
+            Assert.That(progress.Steps[1].Fraction, Is.EqualTo(0.5f));
         }
 
         [Test]
@@ -125,21 +125,6 @@ namespace Top.Conversion.Tests.Pipeline
             }
 
             Assert.That(results, Has.Count.EqualTo(1));
-        }
-
-        private class Progress : System.IProgress<ConversionProgress>
-        {
-            private readonly List<ConversionProgress> _steps;
-
-            internal Progress(List<ConversionProgress> steps)
-            {
-                _steps = steps;
-            }
-
-            public void Report(ConversionProgress value)
-            {
-                _steps.Add(value);
-            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Top.Conversion.Cli
 
         private static readonly string[] EveryKind =
         [
-            ContentKind.Character, ContentKind.Item, ContentKind.Scene, ContentKind.Table
+            ContentKind.Character, ContentKind.Item, ContentKind.Scene, ContentKind.Table, ContentKind.Map
         ];
 
         public static readonly string Usage = $"""

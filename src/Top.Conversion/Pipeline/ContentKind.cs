@@ -1,8 +1,8 @@
 namespace Top.Conversion.Pipeline
 {
     /// <summary>
-    /// The content families the client's model folders map to. Conversion
-    /// output is laid out under these names.
+    /// The content families the command line converts. Conversion output is
+    /// laid out under these names.
     /// </summary>
     public static class ContentKind
     {
@@ -13,5 +13,7 @@ namespace Top.Conversion.Pipeline
         public const string Scene = "scene";
 
         public const string Table = "table";
+
+        public const string Map = "map";
     }
 }

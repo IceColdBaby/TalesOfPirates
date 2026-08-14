@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using NUnit.Framework;
 using Top.Contracts.Assets.Maps;
@@ -151,6 +152,35 @@ namespace Top.Contracts.Assets.Tests
             Assert.That(read.ChunkSize, Is.EqualTo(64));
             Assert.That(read.TexturePalette,
                 Is.EqualTo(new[] { "textures/terrain/grass.png", "textures/terrain/sand.png" }));
+        }
+
+        private static long WrittenLength(Func<MapChunk> chunk)
+        {
+            var map = new MapFile(128, 128, 64, new[] { "textures/terrain/grass.png" });
+
+            for (var y = 0; y < map.ChunkCountY; y++)
+            {
+                for (var x = 0; x < map.ChunkCountX; x++)
+                {
+                    map.Chunks[x, y] = chunk();
+                }
+            }
+
+            using var stream = new MemoryStream();
+            map.Write(stream);
+
+            return stream.Length;
+        }
+
+        [Test]
+        public void Ground_that_repeats_costs_almost_nothing()
+        {
+            var distinct = WrittenLength(() => FullyPopulatedChunk(64));
+            var alike = WrittenLength(() => new MapChunk(64));
+
+            Assert.That(alike * 20, Is.LessThan(distinct),
+                "the body is deflated, so the ground a chunk pads itself with where nothing was " +
+                "authored costs next to nothing");
         }
 
         [Test]

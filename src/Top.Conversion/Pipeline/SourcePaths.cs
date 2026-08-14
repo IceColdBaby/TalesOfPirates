@@ -20,9 +20,15 @@ namespace Top.Conversion.Pipeline
 
         public string Animations => Path.Combine(_root, "animation");
 
+        public string Maps => Path.Combine(_root, "map");
+
         public string CharacterAction => Path.Combine(_root, "scripts", "txt", "CharacterAction.tx");
 
         public string Model(string folder, string fileName) => Path.Combine(Models, folder, fileName);
+
+        public string MapTerrain(string name) => Path.Combine(Maps, name + ".map");
+
+        public string MapObjects(string name) => Path.Combine(Maps, name + ".obj");
 
         public string TextureDir(string kind) => Path.Combine(Textures, kind.ToLowerInvariant());
 

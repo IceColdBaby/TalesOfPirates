@@ -19,6 +19,7 @@ namespace Top.Conversion.Pipeline
         private readonly Lazy<Table<ItemInfoRecord>> _items;
         private readonly Lazy<Table<SceneObjectInfoRecord>> _sceneObjects;
         private readonly Lazy<CharacterActionTable> _actions;
+        private readonly Lazy<Table<TerrainInfoRecord>> _terrain;
 
         public ClientTables(ConversionSettings settings)
         {
@@ -27,15 +28,18 @@ namespace Top.Conversion.Pipeline
             _sceneObjects =
                 Deferred(() => ReadTable<SceneObjectInfoRecord>(settings.Source.Table("sceneobjinfo.txt")));
             _actions = Deferred(() => Read(settings.Source.CharacterAction, CharacterActionTable.Read));
+            _terrain = Deferred(() => ReadTable<TerrainInfoRecord>(settings.Source.Table("terraininfo.txt")));
         }
 
         public ClientTables(Table<CharacterInfoRecord> characters, Table<ItemInfoRecord> items,
-            Table<SceneObjectInfoRecord> sceneObjects, CharacterActionTable actions)
+            Table<SceneObjectInfoRecord> sceneObjects, CharacterActionTable actions,
+            Table<TerrainInfoRecord> terrain = null)
         {
             _characters = Ready(characters);
             _items = Ready(items);
             _sceneObjects = Ready(sceneObjects);
             _actions = Ready(actions);
+            _terrain = Ready(terrain);
         }
 
         public Table<CharacterInfoRecord> Characters => _characters.Value;
@@ -45,6 +49,8 @@ namespace Top.Conversion.Pipeline
         public Table<SceneObjectInfoRecord> SceneObjects => _sceneObjects.Value;
 
         public CharacterActionTable Actions => _actions.Value;
+
+        public Table<TerrainInfoRecord> Terrain => _terrain.Value;
 
         public IReadOnlyList<CharacterInfoRecord> CharactersOn(int model)
         {

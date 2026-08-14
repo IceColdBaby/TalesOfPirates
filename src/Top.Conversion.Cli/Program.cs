@@ -96,6 +96,7 @@ namespace Top.Conversion.Cli
                 ContentKind.Item => pipeline.Items.ConvertAll(progress),
                 ContentKind.Scene => pipeline.SceneObjects.ConvertAll(progress),
                 ContentKind.Table => pipeline.Tables.ConvertAll(progress),
+                ContentKind.Map => pipeline.Maps.ConvertAll(progress),
                 _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
             };
         }
