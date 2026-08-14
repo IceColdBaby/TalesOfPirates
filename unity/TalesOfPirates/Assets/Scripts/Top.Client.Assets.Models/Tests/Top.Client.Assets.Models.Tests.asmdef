@@ -5,6 +5,7 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Top.Client.Assets.Models",
+        "Top.Content.Packs",
         "Top.Contracts.Assets",
         "glTFast",
         "glTFast.Newtonsoft"

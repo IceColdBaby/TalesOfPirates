@@ -17,6 +17,12 @@
       },
       "hash": "c14de1e6dc01ab42d2bb358730cff954bce0ce6b"
     },
+    "com.top.content.packs": {
+      "version": "file:../../../src/Top.Content.Packs",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.top.contracts.assets": {
       "version": "file:../../../src/Top.Contracts.Assets",
       "depth": 0,
